@@ -2,23 +2,24 @@
 
 The [Negroni](https://negroni.vercel.app/) is a popular Italian cocktail, made of one part gin, one part vermouth rosso, and one part Campari, garnished with orange peel. It is considered an apéritif. A traditionally made Negroni is stirred, not shaken, and built over ice in an old-fashioned or rocks glass and garnished with a slice of orange.
 
-## Next.js with Redux Toolkit
+## Todos
 
-This is a [Next.js](https://nextjs.org/) project integrated with [Redux Toolkit](https://redux-toolkit.js.org), and bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/examples/with-redux-toolkit).
+- [ ] remove `*.module.css`, use styled-components approach instead.
+## Material Palette
 
-```bash
-npx create-next-app --example with-redux-toolkit with-redux-toolkit-app
-# or
-yarn create next-app --example with-redux-toolkit with-redux-toolkit-app
-```
+Use `#616161` as primary and `#7e57c2` as secondary. There are several UI use case on [material color tool](https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=616161&secondary.color=7E57C2).
+
+## Next.js with Redux Toolkit and styled-components
+
+This is a [Next.js](https://nextjs.org/) project integrated with [Redux Toolkit](https://redux-toolkit.js.org) and [styled-components](https://styled-components.com/). How-to please check `create-next-app` examples, [with-redux-toolkit](https://github.com/vercel/next.js/tree/canary/examples/with-redux-toolkit) and [with-styled-components](https://github.com/vercel/next.js/tree/master/examples/with-styled-components).
+
+## Next.js with styled-components
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
