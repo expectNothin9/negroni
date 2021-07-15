@@ -1,4 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Negroni
+
+The Negroni is a popular Italian cocktail, made of one part gin, one part vermouth rosso, and one part Campari, garnished with orange peel. It is considered an apéritif. A traditionally made Negroni is stirred, not shaken, and built over ice in an old-fashioned or rocks glass and garnished with a slice of orange.
+
+## Next.js with Redux Toolkit
+
+This is a [Next.js](https://nextjs.org/) project integrated with [Redux Toolkit](https://redux-toolkit.js.org), and bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/examples/with-redux-toolkit).
+
+```bash
+npx create-next-app --example with-redux-toolkit with-redux-toolkit-app
+# or
+yarn create next-app --example with-redux-toolkit with-redux-toolkit-app
+```
 
 ## Getting Started
 
