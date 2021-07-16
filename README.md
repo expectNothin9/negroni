@@ -5,9 +5,21 @@ The [Negroni](https://negroni.vercel.app/) is a popular Italian cocktail, made o
 ## Todos
 
 - [ ] remove `*.module.css`, use styled-components approach instead.
+- [ ] handle `navSlice`'s `activeTab` value in each page
+
+
+## Material Icons
+
+Using [web font approach](https://github.com/google/material-design-icons#using-a-font) to adopt Material Icons. And can search icons at [fonts.google.com/icons](https://fonts.google.com/icons).
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet">
+```
+
 ## Material Palette
 
-Use `#616161` as primary and `#7e57c2` as secondary. There are several UI use case on [material color tool](https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=616161&secondary.color=7E57C2).
+Use `#455a64` as primary and `#7e57c2` as secondary. There are several UI use case on [material color tool](https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=455A64&secondary.color=7E57C2).
 
 ## Next.js with Redux Toolkit and styled-components
 
