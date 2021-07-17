@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useDispatch } from 'react-redux'
 
+import Main from '../components/Main'
 import Nav from '../components/Nav'
 import HomeIndex from '../components/home/Index'
 import { initHome } from '../features/pagesSlice'
@@ -23,14 +24,14 @@ const Home = ({ nav }) => {
   dispatch(initHome({ nav }))
 
   return (
-    <main>
+    <Main>
       <Head>
         <title>AGEDLION</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav />
       <HomeIndex />
-    </main>
+    </Main>
   )
 }
 

@@ -8,6 +8,8 @@ export const getNavTabLink = (tabId) => {
       return '/'
     case 'profile':
       return '/profile'
+    case 'settings':
+      return '/settings'
     case 'author':
       return '/author'
     default:
@@ -25,6 +27,8 @@ export const getNavTabIconType = (tabId) => {
       return 'home'
     case 'profile':
       return 'account_circle'
+    case 'settings':
+      return 'settings'
     case 'author':
       return 'construction'
     default:

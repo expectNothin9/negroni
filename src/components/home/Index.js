@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 const HaloBox = styled.div`
@@ -83,7 +84,7 @@ const HALO_LETTERS = [
 ]
 const Halo = () => {
   return (
-    <HaloBox>
+    <HaloBox className="halo">
       {HALO_LETTERS.map((letter) => (
         <span key={letter.id} style={{ ['--i']: letter.id }}>
           {letter.char}
@@ -97,13 +98,8 @@ const LogoBox = styled.div`
   display: inline-block;
   padding: 24px;
   border-radius: 50%;
-  background: linear-gradient(
-    to top,
-    var(--primary-light),
-    var(--surface) 75%,
-    var(--primary-light)
-  );
-  box-shadow: inset 0 0 20px var(--primary-dark);
+  background-color: var(--primary-light);
+  box-shadow: inset 0 0 20px var(--primary-dark), 0 0 50px var(--primary-light);
   img {
     max-width: 60vmin;
   }
@@ -125,13 +121,16 @@ const LogoBox = styled.div`
     }
   }
 `
-const Logo = () => (
-  <LogoBox>
-    {/* eslint-disable-next-line @next/next/no-img-element */}
-    <img className="logo" src="/img/agln_000000.png" alt="AGEDLION Logo" />
-  </LogoBox>
-)
-
+const Logo = () => {
+  const theme = useSelector(({ pages }) => pages.theme)
+  const logoSrc = theme === 'light' ? '/img/agln_000000.png' : '/img/agln_ffffff.png'
+  return (
+    <LogoBox>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="logo" src={logoSrc} alt="AGEDLION Logo" />
+    </LogoBox>
+  )
+}
 const StyledHome = styled.section`
   height: 100%;
   display: flex;

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useDispatch } from 'react-redux'
 
+import Main from '../components/Main'
 import Nav from '../components/Nav'
 import { initProfile } from '../features/pagesSlice'
 
@@ -21,13 +22,13 @@ const Profile = ({ nav }) => {
   dispatch(initProfile({ nav }))
 
   return (
-    <main>
+    <Main>
       <Head>
         <title>Profile - AGEDLION</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav />
-    </main>
+    </Main>
   )
 }
 

@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { initHome, initProfile, initAuthor } from './pagesSlice'
+import { initHome, initProfile, initSettings, initAuthor } from './pagesSlice'
 
 const initialState = {
   activeTab: 'home',
-  tabs: ['home', 'profile', 'author'],
+  tabs: ['home', 'profile', 'settings', 'author'],
   isDisplayed: true,
   isExpanded: true
 }
@@ -32,6 +32,7 @@ export const navSlice = createSlice({
   extraReducers: {
     [initHome]: reduceInitAction,
     [initProfile]: reduceInitAction,
+    [initSettings]: reduceInitAction,
     [initAuthor]: reduceInitAction
   }
 })

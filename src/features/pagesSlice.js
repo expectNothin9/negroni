@@ -1,18 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  id: ''
+  id: '',
+  theme: 'light'
 }
 
 export const pagesSlice = createSlice({
   name: 'pages',
   initialState,
   reducers: {
+    changeTheme: (state, action) => {
+      state.theme = action.payload.theme
+    },
     initHome: (state) => {
       state.id = 'home'
     },
     initProfile: (state) => {
       state.id = 'profile'
+    },
+    initSettings: (state) => {
+      state.id = 'settings'
     },
     initAuthor: (state) => {
       state.id = 'author'
@@ -20,6 +27,6 @@ export const pagesSlice = createSlice({
   }
 })
 
-export const { initHome, initProfile, initAuthor } = pagesSlice.actions
+export const { changeTheme, initHome, initProfile, initSettings, initAuthor } = pagesSlice.actions
 
 export default pagesSlice.reducer

@@ -3,33 +3,35 @@ import { useDispatch } from 'react-redux'
 
 import Main from '../components/Main'
 import Nav from '../components/Nav'
-import { initAuthor } from '../features/pagesSlice'
+import SettingsIndex from '../components/settings/Index'
+import { initSettings } from '../features/pagesSlice'
 
 export async function getStaticProps(context) {
   return {
     // will be passed to the page component as props
     props: {
       nav: {
-        activeTab: 'author',
+        activeTab: 'settings',
         isExpanded: false
       }
     }
   }
 }
 
-const Author = ({ nav }) => {
+const Settings = ({ nav }) => {
   const dispatch = useDispatch()
-  dispatch(initAuthor({ nav }))
+  dispatch(initSettings({ nav }))
 
   return (
     <Main>
       <Head>
-        <title>Author - AGEDLION</title>
+        <title>Settings - AGEDLION</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav />
+      <SettingsIndex />
     </Main>
   )
 }
 
-export default Author
+export default Settings
