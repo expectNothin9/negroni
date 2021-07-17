@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const Icon = ({ type }) => <i className="material-icons">{type}</i>
 

@@ -1,6 +1,7 @@
 import { Counter } from '../features/counter/Counter'
 import styles from '../styles/Home.module.css'
 import Head from 'next/head'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className={styles.header}>
-        <img src="/logo.svg" className={styles.logo} alt="logo" />
+        <Image src="/logo.svg" className={styles.logo} alt="logo" />
         <Counter />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -21,8 +22,7 @@ export default function Home() {
             className={styles.link}
             href="https://reactjs.org/"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             React
           </a>
           <span>, </span>
@@ -30,8 +30,7 @@ export default function Home() {
             className={styles.link}
             href="https://redux.js.org/"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             Redux
           </a>
           <span>, </span>
@@ -39,8 +38,7 @@ export default function Home() {
             className={styles.link}
             href="https://redux-toolkit.js.org/"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             Redux Toolkit
           </a>
           ,<span> and </span>
@@ -48,8 +46,7 @@ export default function Home() {
             className={styles.link}
             href="https://react-redux.js.org/"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             React Redux
           </a>
         </span>

@@ -19,7 +19,7 @@ export const getNavTabLink = (tabId) => {
  * @param {string} tabId
  * @returns {string}
  */
- export const getNavTabIconType = (tabId) => {
+export const getNavTabIconType = (tabId) => {
   switch (tabId) {
     case 'home':
       return 'home'

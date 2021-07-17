@@ -36,7 +36,7 @@ const NavTab = ({ id, isActive }) => {
   return (
     <StyledNavTab className={isActive ? 'highlight' : ''}>
       <a href={link}>
-        <Icon type={iconType}/>
+        <Icon type={iconType} />
         <span>{id}</span>
       </a>
     </StyledNavTab>
@@ -48,7 +48,7 @@ const NavTabsList = styled.ul`
   padding: 12px 0 12px 12px;
   border-right: 12px solid var(--primary-dark);
   overflow: hidden;
-  transition: width .5s;
+  transition: width 0.5s;
   &.slim {
     width: 72px;
   }
@@ -85,7 +85,9 @@ const Nav = () => {
   return (
     <StyledNav>
       <NavTabsList className={isExpanded ? 'wide' : 'slim'}>
-        {tabs.map((tab) => <NavTab key={tab} id={tab} isActive={tab === activeTab} />)}
+        {tabs.map((tab) => (
+          <NavTab key={tab} id={tab} isActive={tab === activeTab} />
+        ))}
       </NavTabsList>
       <ToggleButton type="button" className="toggle-button" onClick={hangleToggleIsExpanded}>
         <Icon type={isExpanded ? 'arrow_back' : 'arrow_forward'} />

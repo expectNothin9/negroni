@@ -16,7 +16,7 @@ export const navSlice = createSlice({
     toggleIsExpanded: (state) => {
       state.isExpanded = !state.isExpanded
     }
-  },
+  }
 })
 
 export const { changeActiveTab, toggleIsExpanded } = navSlice.actions
