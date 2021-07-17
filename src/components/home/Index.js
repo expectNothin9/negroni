@@ -20,7 +20,7 @@ const HaloBox = styled.div`
     width: 24px;
     height: 40px;
     padding: 6px 0;
-    transform: rotateY(calc(var(--i) * calc(360deg / 28))) translateZ(100px);
+    transform: rotateY(calc(var(--i) * calc(360deg / 28))) translateZ(100px) translateY(-40px);
     border-top: 4px solid var(--secondary);
     border-bottom: 4px solid var(--secondary);
   }
@@ -89,10 +89,15 @@ const LogoBox = styled.div`
   display: inline-block;
   padding: 24px;
   border-radius: 50%;
+  background: linear-gradient(
+    to top,
+    var(--primary-light),
+    var(--background) 75%,
+    var(--background)
+  );
   background-color: var(--primary-light);
   img {
-    max-width: 60vw;
-    max-height: 60vh;
+    max-width: 60vmin;
   }
   @media (prefers-reduced-motion: no-preference) {
     .logo {
