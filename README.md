@@ -4,9 +4,7 @@ The [Negroni](https://negroni.vercel.app/) is a popular Italian cocktail, made o
 
 ## Todos
 
-- [ ] remove `*.module.css`, use styled-components approach instead.
-- [ ] handle `navSlice`'s `activeTab` value in each page
-
+- [ ] N/A
 
 ## Material Icons
 

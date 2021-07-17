@@ -36,7 +36,7 @@ const NavTab = ({ id, isActive }) => {
   return (
     <StyledNavTab className={isActive ? 'highlight' : ''}>
       <a href={link}>
-        <Icon type={iconType} />
+        <Icon type={iconType} title={`Go to ${id} page`} />
         <span>{id}</span>
       </a>
     </StyledNavTab>
@@ -85,8 +85,9 @@ const ToggleExpandButton = styled(ToggleButton)`
   border-bottom-right-radius: 12px;
 `
 const StyledNav = styled.nav`
+  z-index: 1;
   position: fixed;
-  top: 50%;
+  top: 75%;
   left: 12px;
   transition: transform 0.5s;
   &.visible {

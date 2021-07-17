@@ -19,9 +19,9 @@ export const navSlice = createSlice({
   name: 'nav',
   initialState,
   reducers: {
-    changeActiveTab: (state, action) => {
-      state.activeTab = action.payload.toTab
-    },
+    // changeActiveTab: (state, action) => {
+    //   state.activeTab = action.payload.toTab
+    // },
     toggleIsDisplayed: (state) => {
       state.isDisplayed = !state.isDisplayed
     },
