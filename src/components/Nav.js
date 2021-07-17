@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import Icon from './Icon'
-import { toggleIsExpanded } from '../features/navSlice'
+import { toggleIsDisplayed, toggleIsExpanded } from '../features/navSlice'
 import { getNavTabLink, getNavTabIconType } from '../utils'
 
 const StyledNavTab = styled.li`
@@ -57,8 +57,7 @@ const NavTabsList = styled.ul`
   }
 `
 const ToggleButton = styled.button`
-  position: absolute;
-  right: 0;
+  box-sizing: content-box;
   width: 32px;
   height: 32px;
   padding: 0;
@@ -66,32 +65,61 @@ const ToggleButton = styled.button`
   border: none;
   background-color: var(--primary-dark);
   color: var(--primary-light);
-  border-bottom-right-radius: 12px;
   cursor: pointer;
   &:hover {
     color: var(--on-primary-dark);
   }
 `
+const ToggleDisplayButton = styled(ToggleButton)`
+  position: absolute;
+  top: -32px;
+  right: -26px;
+  padding-left: 6px;
+  border-top-left-radius: 12px;
+`
+const ToggleExpandButton = styled(ToggleButton)`
+  position: absolute;
+  bottom: -32px;
+  right: 0;
+  padding-right: 6px;
+  border-bottom-right-radius: 12px;
+`
 const StyledNav = styled.nav`
   position: fixed;
   top: 50%;
   left: 12px;
-  transform: translateY(-50%);
+  transition: transform 0.5s;
+  &.visible {
+    transform: translate(0, -50%);
+  }
+  &.hidden {
+    transform: translate(-100%, -50%);
+  }
 `
 const Nav = () => {
   const dispatch = useDispatch()
-  const { activeTab, tabs, isExpanded } = useSelector(({ nav }) => nav)
+  const { activeTab, tabs, isDisplayed, isExpanded } = useSelector(({ nav }) => nav)
+  const hangleToggleIsDisplayed = useCallback(() => dispatch(toggleIsDisplayed()), [dispatch])
   const hangleToggleIsExpanded = useCallback(() => dispatch(toggleIsExpanded()), [dispatch])
   return (
-    <StyledNav>
+    <StyledNav className={isDisplayed ? 'visible' : 'hidden'}>
+      <ToggleDisplayButton
+        type="button"
+        className="toggle-display-button"
+        onClick={hangleToggleIsDisplayed}>
+        <Icon type={isDisplayed ? 'close' : 'menu'} />
+      </ToggleDisplayButton>
       <NavTabsList className={isExpanded ? 'wide' : 'slim'}>
         {tabs.map((tab) => (
           <NavTab key={tab} id={tab} isActive={tab === activeTab} />
         ))}
       </NavTabsList>
-      <ToggleButton type="button" className="toggle-button" onClick={hangleToggleIsExpanded}>
+      <ToggleExpandButton
+        type="button"
+        className="toggle-expand-button"
+        onClick={hangleToggleIsExpanded}>
         <Icon type={isExpanded ? 'arrow_back' : 'arrow_forward'} />
-      </ToggleButton>
+      </ToggleExpandButton>
     </StyledNav>
   )
 }
