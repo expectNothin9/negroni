@@ -17,10 +17,10 @@ const HaloBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24px;
+    width: 28px;
     height: 40px;
     padding: 6px 0;
-    transform: rotateY(calc(var(--i) * calc(360deg / 28))) translateZ(100px) translateY(-40px);
+    transform: rotateY(calc(var(--i) * calc(360deg / 28))) translateZ(120px) translateY(-56px);
     border-top: 4px solid var(--secondary);
     border-bottom: 4px solid var(--secondary);
   }
@@ -40,6 +40,14 @@ const HaloBox = styled.div`
     }
     100% {
       transform: perspective(1000px) rotateY(0deg) rotateX(15deg);
+    }
+  }
+  @media only screen and (max-width: 428px) {
+    span {
+      font-size: 20px;
+      width: 20px;
+      height: 36px;
+      transform: rotateY(calc(var(--i) * calc(360deg / 28))) translateZ(80px) translateY(-52px);
     }
   }
 `
@@ -92,10 +100,10 @@ const LogoBox = styled.div`
   background: linear-gradient(
     to top,
     var(--primary-light),
-    var(--background) 75%,
-    var(--background)
+    var(--surface) 75%,
+    var(--primary-light)
   );
-  background-color: var(--primary-light);
+  box-shadow: inset 0 0 20px var(--primary-dark);
   img {
     max-width: 60vmin;
   }
@@ -130,6 +138,7 @@ const StyledHome = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transform-style: preserve-3d;
 `
 const HomeIndex = () => (
   <StyledHome>
