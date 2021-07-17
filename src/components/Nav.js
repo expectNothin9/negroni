@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import Icon from './Icon'
-import { toggleIsSlim } from '../features/navSlice'
+import { toggleIsExpanded } from '../features/navSlice'
 import { getNavTabLink, getNavTabIconType } from '../utils'
 
 const StyledNavTab = styled.li`
@@ -80,15 +80,15 @@ const StyledNav = styled.nav`
 `
 const Nav = () => {
   const dispatch = useDispatch()
-  const { activeTab, tabs, isSlim } = useSelector(({ nav }) => nav)
-  const hangleToggleIsSlim = useCallback(() => dispatch(toggleIsSlim()), [dispatch])
+  const { activeTab, tabs, isExpanded } = useSelector(({ nav }) => nav)
+  const hangleToggleIsExpanded = useCallback(() => dispatch(toggleIsExpanded()), [dispatch])
   return (
     <StyledNav>
-      <NavTabsList className={isSlim ? 'slim' : 'wide'}>
+      <NavTabsList className={isExpanded ? 'wide' : 'slim'}>
         {tabs.map((tab) => <NavTab key={tab} id={tab} isActive={tab === activeTab} />)}
       </NavTabsList>
-      <ToggleButton type="button" className="toggle-button" onClick={hangleToggleIsSlim}>
-        <Icon type={isSlim ? 'arrow_forward' : 'arrow_back'} />
+      <ToggleButton type="button" className="toggle-button" onClick={hangleToggleIsExpanded}>
+        <Icon type={isExpanded ? 'arrow_back' : 'arrow_forward'} />
       </ToggleButton>
     </StyledNav>
   )

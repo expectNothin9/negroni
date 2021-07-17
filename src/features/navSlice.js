@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   activeTab: 'profile',
   tabs: ['home', 'profile', 'author'],
-  isSlim: true
+  isExpanded: true
 }
 
 export const navSlice = createSlice({
@@ -13,12 +13,12 @@ export const navSlice = createSlice({
     changeActiveTab: (state, action) => {
       state.activeTab = action.payload.toTab
     },
-    toggleIsSlim: (state) => {
-      state.isSlim = !state.isSlim
+    toggleIsExpanded: (state) => {
+      state.isExpanded = !state.isExpanded
     }
   },
 })
 
-export const { changeActiveTab, toggleIsSlim } = navSlice.actions
+export const { changeActiveTab, toggleIsExpanded } = navSlice.actions
 
 export default navSlice.reducer
