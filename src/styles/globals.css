@@ -18,20 +18,20 @@ a {
   --primary: #7e57c2;
   --primary-light: #b085f5;
   --primary-dark: #4d2c91;
-  --on-primary: #ffffff;
-  --on-primary-light: #000000;
-  --on-primary-dark: #ffffff;
+  --on-primary: #fafafa;
+  --on-primary-light: #050505;
+  --on-primary-dark: #fafafa;
   --secondary: #7e57c2;
   --secondary-light: #b085f5;
   --secondary-dark: #4d2c91;
-  --on-secondary: #ffffff;
-  --on-secondary-light: #000000;
-  --on-secondary-dark: #ffffff;
-  --background: #eceff1;
-  --on-background: #000000;
+  --on-secondary: #fafafa;
+  --on-secondary-light: #050505;
+  --on-secondary-dark: #fafafa;
+  --background: #dedede;
+  --on-background: #212121;
   --surface: #fafafa;
-  --on-surface: #000000;
-  --shadow: #616161;
+  --on-surface: #212121;
+  --divider: #bdbdbd;
 }
 html,
 body,
@@ -44,17 +44,18 @@ main.dark {
   --primary: #7e57c2;
   --primary-light: #4d2c91;
   --primary-dark: #b085f5;
-  --on-primary: #ffffff;
-  --on-primary-light: #ffffff;
-  --on-primary-dark: #000000;
+  --on-primary: #fafafa;
+  --on-primary-light: #fafafa;
+  --on-primary-dark: #050505;
   --secondary: #7e57c2;
   --secondary-light: #4d2c91;
   --secondary-dark: #b085f5;
-  --on-secondary: #ffffff;
-  --on-secondary-light: #ffffff;
-  --on-secondary-dark: #000000;
+  --on-secondary: #fafafa;
+  --on-secondary-light: #fafafa;
+  --on-secondary-dark: #050505;
   --background: #212121;
-  --on-background: #ffffff;
-  --surface: #484848;
-  --on-surface: #ffffff;
+  --on-background: #dedede;
+  --surface: #050505;
+  --on-surface: #dedede;
+  --divider: #424242;
 }

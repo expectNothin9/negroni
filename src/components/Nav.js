@@ -7,15 +7,15 @@ import { toggleIsDisplayed, toggleIsExpanded } from '../features/navSlice'
 import { getNavTabLink, getNavTabIconType } from '../utils'
 
 const StyledNavTab = styled.li`
-  color: var(--primary-light);
+  color: var(--primary);
   &:hover {
-    color: var(--on-primary-dark);
+    color: var(--primary-dark);
   }
   &.highlight {
-    color: var(--on-primary-dark);
-    background-color: var(--primary-dark);
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
+    color: var(--on-primary);
+    background-color: var(--primary);
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
   }
 
   a {
@@ -44,13 +44,13 @@ const NavTab = ({ id, isActive }) => {
 }
 
 const NavTabsList = styled.ul`
-  background-color: var(--primary);
+  background-color: var(--surface);
   padding: 12px 0 12px 12px;
-  border-right: 12px solid var(--primary-dark);
+  border-right: 6px solid var(--primary);
   overflow: hidden;
   transition: width 0.5s;
   &.slim {
-    width: 72px;
+    width: 64px;
   }
   &.wide {
     width: 320px;
@@ -63,38 +63,41 @@ const ToggleButton = styled.button`
   padding: 0;
   margin: 0;
   border: none;
-  background-color: var(--primary-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary);
   color: var(--primary-light);
   cursor: pointer;
   &:hover {
-    color: var(--on-primary-dark);
+    color: var(--on-primary);
   }
 `
 const ToggleDisplayButton = styled(ToggleButton)`
   position: absolute;
   top: -32px;
-  right: -26px;
+  right: -32px;
   padding-left: 6px;
-  border-top-left-radius: 12px;
+  border-top-left-radius: 6px;
 `
 const ToggleExpandButton = styled(ToggleButton)`
   position: absolute;
   bottom: -32px;
   right: 0;
   padding-right: 6px;
-  border-bottom-right-radius: 12px;
+  border-bottom-right-radius: 6px;
 `
 const StyledNav = styled.nav`
   z-index: 1;
   position: fixed;
-  top: 75%;
-  left: 12px;
+  top: 40px;
+  left: 0;
   transition: transform 0.5s;
   &.visible {
-    transform: translate(0, -50%);
+    transform: translateX(0);
   }
   &.hidden {
-    transform: translate(-100%, -50%);
+    transform: translateX(-100%);
   }
 `
 const Nav = () => {

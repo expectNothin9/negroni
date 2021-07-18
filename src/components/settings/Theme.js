@@ -9,7 +9,7 @@ const Caption = styled.h3`
   color: var(--on-surface);
   padding: 0 12px 12px;
   margin-bottom: 12px;
-  border-bottom: 1px solid var(--on-surface);
+  border-bottom: 1px solid var(--divider);
 `
 const RadioBox = styled.div`
   display: flex;
