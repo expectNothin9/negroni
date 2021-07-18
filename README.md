@@ -17,13 +17,13 @@ Using [web font approach](https://github.com/google/material-design-icons#using-
 
 ## Material Palette
 
-Use `#455a64` as primary and `#7e57c2` as secondary. There are several UI use case on [material color tool](https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=455A64&secondary.color=7E57C2).
+Use `#7e57c2` as primary and `#7e57c2` as secondary. There are several UI use case on [material color tool](https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=7E57C2&secondary.color=7E57C2).
 
 ## Next.js with Redux Toolkit and styled-components
 
 This is a [Next.js](https://nextjs.org/) project integrated with [Redux Toolkit](https://redux-toolkit.js.org) and [styled-components](https://styled-components.com/). How-to please check `create-next-app` examples, [with-redux-toolkit](https://github.com/vercel/next.js/tree/canary/examples/with-redux-toolkit) and [with-styled-components](https://github.com/vercel/next.js/tree/master/examples/with-styled-components).
 
-## Next.js with styled-components
+In addition, also adopt universal rendering approach from [`with-redux-wrapper`](https://github.com/vercel/next.js/tree/canary/examples/with-redux-wrapper) example.
 
 ## Getting Started
 

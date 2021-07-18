@@ -1,35 +1,29 @@
 import Head from 'next/head'
-import { useDispatch } from 'react-redux'
 
+import { nextReduxWrapper } from '../app/store'
 import Main from '../components/Main'
 import Nav from '../components/Nav'
 import { initAuthor } from '../features/pagesSlice'
 
-export async function getStaticProps(context) {
-  return {
-    // will be passed to the page component as props
-    props: {
+export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async (_context) => {
+  store.dispatch(
+    initAuthor({
       nav: {
         activeTab: 'author',
         isExpanded: false
       }
-    }
-  }
-}
-
-const Author = ({ nav }) => {
-  const dispatch = useDispatch()
-  dispatch(initAuthor({ nav }))
-
-  return (
-    <Main>
-      <Head>
-        <title>Author - AGEDLION</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Nav />
-    </Main>
+    })
   )
-}
+})
+
+const Author = () => (
+  <Main>
+    <Head>
+      <title>Author - AGEDLION</title>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <Nav />
+  </Main>
+)
 
 export default Author

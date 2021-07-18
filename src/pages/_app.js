@@ -1,13 +1,9 @@
-import { Provider } from 'react-redux'
-import { store } from '../app/store'
+import { nextReduxWrapper } from '../app/store'
 import '../styles/globals.css'
 
 const MyApp = ({ Component, pageProps }) => {
-  return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
-  )
+  return <Component {...pageProps} />
 }
+const WrappedApp = nextReduxWrapper.withRedux(MyApp)
 
-export default MyApp
+export default WrappedApp
