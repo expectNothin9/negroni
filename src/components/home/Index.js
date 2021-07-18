@@ -21,7 +21,7 @@ const HaloBox = styled.div`
     width: 7vmin;
     height: 7vmin;
     transform: rotateY(calc(var(--i) * calc(360deg / 32))) translateZ(calc(30vmin))
-      translateY(18vmin);
+      translateY(20vmin);
     border-top: 1vmin solid var(--secondary);
     border-bottom: 1vmin solid var(--secondary);
   }
@@ -37,10 +37,10 @@ const HaloBox = styled.div`
   }
   @keyframes halo-spin {
     0% {
-      transform: perspective(1000px) rotateY(360deg) rotateX(15deg);
+      transform: perspective(1000px) rotateY(360deg) rotateX(10deg);
     }
     100% {
-      transform: perspective(1000px) rotateY(0deg) rotateX(15deg);
+      transform: perspective(1000px) rotateY(0deg) rotateX(10deg);
     }
   }
 `
