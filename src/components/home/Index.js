@@ -18,9 +18,9 @@ const HaloBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 6vmin;
+    width: 7vmin;
     height: 7vmin;
-    transform: rotateY(calc(var(--i) * calc(360deg / 32))) translateZ(calc(21vmin + 6vmin))
+    transform: rotateY(calc(var(--i) * calc(360deg / 32))) translateZ(calc(30vmin))
       translateY(18vmin);
     border-top: 1vmin solid var(--secondary);
     border-bottom: 1vmin solid var(--secondary);
@@ -33,7 +33,7 @@ const HaloBox = styled.div`
     width: 100%;
     height: 100%;
     background-color: var(--secondary-dark);
-    transform: translateZ(-5px);
+    transform: translateZ(-2px);
   }
   @keyframes halo-spin {
     0% {
