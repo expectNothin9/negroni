@@ -20,8 +20,8 @@ const HaloBox = styled.div`
     align-items: center;
     width: 6vmin;
     height: 7vmin;
-    transform: rotateY(calc(var(--i) * calc(360deg / 32))) translateZ(calc(23vmin + 6vmin))
-      translateY(20vmin);
+    transform: rotateY(calc(var(--i) * calc(360deg / 32))) translateZ(calc(21vmin + 6vmin))
+      translateY(18vmin);
     border-top: 1vmin solid var(--secondary);
     border-bottom: 1vmin solid var(--secondary);
   }
@@ -92,17 +92,16 @@ const Halo = () => {
 
 const LogoBox = styled.div`
   display: inline-block;
-  padding: 3vmin;
+  width: 35vmin;
+  height: 35vmin;
   border-radius: 50%;
-  background-color: var(--surface);
+  background: url(${(props) => props.logoSrc}) var(--surface);
+  background-position: 1.5vmin 1.5vmin;
+  background-size: 32vmin 32vmin;
+  background-repeat: no-repeat;
   box-shadow: 0 0 3vmin var(--shadow);
-  img {
-    width: 35vmin;
-  }
   @media (prefers-reduced-motion: no-preference) {
-    .logo {
-      animation: logo-float infinite 3s ease-in-out;
-    }
+    animation: logo-float infinite 3s ease-in-out;
   }
   @keyframes logo-float {
     0% {
@@ -119,12 +118,7 @@ const LogoBox = styled.div`
 const Logo = () => {
   const theme = useSelector(({ pages }) => pages.theme)
   const logoSrc = theme === 'light' ? '/img/agln_000000.png' : '/img/agln_ffffff.png'
-  return (
-    <LogoBox>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="logo" src={logoSrc} alt="AGEDLION Logo" />
-    </LogoBox>
-  )
+  return <LogoBox logoSrc={logoSrc} />
 }
 const StyledHome = styled.section`
   height: 100%;
