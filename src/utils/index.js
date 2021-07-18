@@ -35,3 +35,8 @@ export const getNavTabIconType = (tabId) => {
       return 'thumb_down_alt'
   }
 }
+
+/**
+ * @returns {boolean}
+ */
+export const isBrowser = () => typeof window !== 'undefined'

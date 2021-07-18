@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   id: '',
-  theme: 'dark'
+  theme: 'light'
 }
 
 export const pagesSlice = createSlice({
