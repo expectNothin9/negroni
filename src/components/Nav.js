@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import Link from 'next/link'
 
 import Icon from './Icon'
 import { getNavTabLink, getNavTabIconType } from '../utils'
@@ -25,9 +26,11 @@ const NavTab = ({ id, isActive }) => {
   const iconType = getNavTabIconType(id)
   return (
     <StyledNavTab className={isActive ? 'highlight' : ''}>
-      <a href={link}>
-        <Icon type={iconType} title={`Go to ${id} page`} />
-      </a>
+      <Link href={link}>
+        <a>
+          <Icon type={iconType} title={`Go to ${id} page`} />
+        </a>
+      </Link>
     </StyledNavTab>
   )
 }
