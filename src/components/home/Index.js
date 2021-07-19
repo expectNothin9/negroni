@@ -62,7 +62,6 @@ const StyledHome = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform-style: preserve-3d;
 `
 const HomeIndex = () => (
   <StyledHome>

@@ -4,9 +4,7 @@ import { initHome, initProfile, initSettings, initAuthor } from './pagesSlice'
 
 const initialState = {
   activeTab: 'home',
-  tabs: ['home', 'profile', 'settings', 'author'],
-  isDisplayed: true,
-  isExpanded: true
+  tabs: ['home', 'profile', 'settings', 'author']
 }
 
 const reduceInitAction = (state, action) => {
@@ -18,17 +16,7 @@ const reduceInitAction = (state, action) => {
 export const navSlice = createSlice({
   name: 'nav',
   initialState,
-  reducers: {
-    // changeActiveTab: (state, action) => {
-    //   state.activeTab = action.payload.toTab
-    // },
-    toggleIsDisplayed: (state) => {
-      state.isDisplayed = !state.isDisplayed
-    },
-    toggleIsExpanded: (state) => {
-      state.isExpanded = !state.isExpanded
-    }
-  },
+  reducers: {},
   extraReducers: {
     [initHome]: reduceInitAction,
     [initProfile]: reduceInitAction,
@@ -37,6 +25,6 @@ export const navSlice = createSlice({
   }
 })
 
-export const { changeActiveTab, toggleIsDisplayed, toggleIsExpanded } = navSlice.actions
+export const {} = navSlice.actions
 
 export default navSlice.reducer

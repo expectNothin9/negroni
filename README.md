@@ -4,9 +4,10 @@ The [Negroni](https://negroni.vercel.app/) is a popular Italian cocktail, made o
 
 ## Todos
 
-- [ ] N/A
+- [ ] TAKE 6!
+- [ ] LINE chatroom
 
-## Material Icons
+## Material Icons adn Palette
 
 Using [web font approach](https://github.com/google/material-design-icons#using-a-font) to adopt Material Icons. And can search icons at [fonts.google.com/icons](https://fonts.google.com/icons).
 
@@ -14,8 +15,6 @@ Using [web font approach](https://github.com/google/material-design-icons#using-
 <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
       rel="stylesheet">
 ```
-
-## Material Palette
 
 Use `#7e57c2` as primary and `#7e57c2` as secondary. There are several UI use case on [material color tool](https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=7E57C2&secondary.color=7E57C2).
 

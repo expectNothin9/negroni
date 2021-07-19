@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 import { nextReduxWrapper } from '../app/store'
 import Main from '../components/Main'
-import Nav from '../components/Nav'
+import UniHeader from '../components/UniHeader'
 import SettingsIndex from '../components/settings/Index'
 import { initSettings } from '../features/pagesSlice'
 
@@ -10,8 +10,7 @@ export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async (
   store.dispatch(
     initSettings({
       nav: {
-        activeTab: 'settings',
-        isExpanded: false
+        activeTab: 'settings'
       }
     })
   )
@@ -23,7 +22,7 @@ const Settings = () => (
       <title>Settings - AGEDLION</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <Nav />
+    <UniHeader />
     <SettingsIndex />
   </Main>
 )
