@@ -6,19 +6,20 @@ import Icon from './Icon'
 import { getNavTabLink, getNavTabIconType } from '../utils'
 
 const StyledNavTab = styled.li`
-  margin: 0 4px;
-  color: var(--on-surface);
-  &.highlight {
-    color: var(--on-primary);
-    background-color: var(--primary);
-    border-radius: 4px;
-  }
   a {
-    width: 40px;
-    height: 40px;
+    margin: 0 6px;
+    color: var(--on-surface);
+    width: 48px;
+    height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  &.highlight a {
+    color: var(--primary);
+    i {
+      font-size: 36px;
+    }
   }
 `
 const NavTab = ({ id, isActive }) => {

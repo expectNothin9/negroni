@@ -7,7 +7,7 @@ const StyledUniHeader = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  height: 57px;
+  height: 49px;
   background-color: var(--surface);
   display: flex;
   justify-content: center;
