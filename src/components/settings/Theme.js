@@ -7,9 +7,10 @@ import { changeTheme } from '../../features/pagesSlice'
 
 const Caption = styled.h3`
   color: var(--on-surface);
-  padding: 0 12px 12px;
+  padding: 6px 12px 12px;
   margin-bottom: 12px;
   border-bottom: 1px solid var(--divider);
+  font-weight: bold;
 `
 const RadioBox = styled.div`
   display: flex;
@@ -19,26 +20,27 @@ const RadioBox = styled.div`
   label {
     display: flex;
     width: 50%;
-    height: calc(35vmin - 32px);
+    height: 60px;
     justify-content: center;
     align-items: center;
     color: var(--on-surface);
     cursor: pointer;
     i {
-      font-size: 15vmin;
+      font-size: 36px;
     }
   }
   input[type='radio']:checked + label {
     color: var(--on-secondary);
     background-color: var(--secondary);
-    border-radius: 12px;
+    border-radius: 4px;
   }
 `
 const ThemeBox = styled.section`
   background-color: var(--surface);
-  width: 70vmin;
-  padding: 16px;
-  border-radius: 12px;
+  max-width: 960px;
+  width: calc(100% - 24px);
+  padding: 12px;
+  border-radius: 4px;
 `
 const Theme = () => {
   const dispatch = useDispatch()
