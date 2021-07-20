@@ -1,53 +1,16 @@
 import styled from 'styled-components'
 
-const members = [
-  {
-    id: '1',
-    nickname: 'Abcde',
-    score: 66
-  },
-  {
-    id: '2',
-    nickname: 'Fghi',
-    score: 66
-  },
-  {
-    id: '3',
-    nickname: 'Jklmnop',
-    score: 66
-  },
-  {
-    id: '4',
-    nickname: 'Qrst',
-    score: 66
-  },
-  {
-    id: '5',
-    nickname: 'Uvw',
-    score: 66
-  },
-  {
-    id: '6',
-    nickname: 'Xyz',
-    score: 66
-  },
-  {
-    id: '7',
-    nickname: 'Abcdefghijklmnopqrstuvwxyz',
-    score: 66
-  }
-]
 const List = styled.ul`
-  padding: 6px 0;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 `
 const MemberItem = styled.li`
   background-color: var(--surface-dark);
   color: var(--on-surface);
-  width: calc(20% - 8px);
-  margin: 4px;
+  width: 180px;
   padding: 12px;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
   .nickname {
@@ -65,6 +28,43 @@ const MemberItem = styled.li`
   }
 `
 const MembersList = () => {
+  const members = [
+    {
+      id: '1',
+      nickname: 'Abcde',
+      score: 66
+    },
+    {
+      id: '2',
+      nickname: 'Fghi',
+      score: 66
+    },
+    {
+      id: '3',
+      nickname: 'Jklmnop',
+      score: 66
+    },
+    {
+      id: '4',
+      nickname: 'Qrst',
+      score: 66
+    },
+    {
+      id: '5',
+      nickname: 'Uvw',
+      score: 66
+    },
+    {
+      id: '6',
+      nickname: 'Xyz',
+      score: 66
+    },
+    {
+      id: '7',
+      nickname: 'Abcdefghijklmnopqrstuvwxyz',
+      score: 66
+    }
+  ]
   return (
     <List className="members-list">
       {members.map((member) => (
