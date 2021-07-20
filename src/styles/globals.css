@@ -30,6 +30,7 @@ a {
   --background: #dedede;
   --on-background: #212121;
   --surface: #fafafa;
+  --surface-dark: #eeeeee;
   --on-surface: #212121;
   --divider: #bdbdbd;
 }
@@ -56,6 +57,7 @@ main.dark {
   --background: #212121;
   --on-background: #dedede;
   --surface: #050505;
+  --surface-dark: #111111;
   --on-surface: #dedede;
   --divider: #424242;
 }

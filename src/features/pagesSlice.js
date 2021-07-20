@@ -15,18 +15,18 @@ export const pagesSlice = createSlice({
     initHome: (state) => {
       state.id = 'home'
     },
-    initProfile: (state) => {
-      state.id = 'profile'
+    initGames: (state) => {
+      state.id = 'games'
     },
     initSettings: (state) => {
       state.id = 'settings'
     },
-    initAuthor: (state) => {
-      state.id = 'author'
+    initBuilders: (state) => {
+      state.id = 'builders'
     }
   }
 })
 
-export const { changeTheme, initHome, initProfile, initSettings, initAuthor } = pagesSlice.actions
+export const { changeTheme, initHome, initGames, initSettings, initBuilders } = pagesSlice.actions
 
 export default pagesSlice.reducer

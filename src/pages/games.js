@@ -3,26 +3,28 @@ import Head from 'next/head'
 import { nextReduxWrapper } from '../app/store'
 import Main from '../components/Main'
 import UniHeader from '../components/UniHeader'
-import { initProfile } from '../features/pagesSlice'
+import GamesIndex from '../components/games/Index'
+import { initGames } from '../features/pagesSlice'
 
 export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async (_context) => {
   store.dispatch(
-    initProfile({
+    initGames({
       nav: {
-        activeTab: 'profile'
+        activeTab: 'games'
       }
     })
   )
 })
 
-const Profile = () => (
+const Games = () => (
   <Main>
     <Head>
-      <title>Profile - AGEDLION</title>
+      <title>Games - AGEDLION</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <UniHeader />
+    <GamesIndex />
   </Main>
 )
 
-export default Profile
+export default Games

@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
+import Section from '../Section'
 import Icon from '../Icon'
 import { changeTheme } from '../../features/pagesSlice'
 
@@ -35,13 +36,6 @@ const RadioBox = styled.div`
     border-radius: 4px;
   }
 `
-const ThemeBox = styled.section`
-  background-color: var(--surface);
-  max-width: 960px;
-  width: calc(100% - 24px);
-  padding: 12px;
-  border-radius: 4px;
-`
 const Theme = () => {
   const dispatch = useDispatch()
   const theme = useSelector(({ pages }) => pages.theme)
@@ -50,7 +44,7 @@ const Theme = () => {
     [dispatch]
   )
   return (
-    <ThemeBox>
+    <Section className="theme">
       <Caption>Theme</Caption>
       <RadioBox>
         <input
@@ -76,7 +70,7 @@ const Theme = () => {
           <Icon type="dark_mode" title="dark theme" />
         </label>
       </RadioBox>
-    </ThemeBox>
+    </Section>
   )
 }
 

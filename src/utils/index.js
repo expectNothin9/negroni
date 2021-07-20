@@ -6,12 +6,12 @@ export const getNavTabLink = (tabId) => {
   switch (tabId) {
     case 'home':
       return '/'
-    case 'profile':
-      return '/profile'
+    case 'games':
+      return '/games'
     case 'settings':
       return '/settings'
-    case 'author':
-      return '/author'
+    case 'builders':
+      return '/builders'
     default:
       return '/'
   }
@@ -25,11 +25,11 @@ export const getNavTabIconType = (tabId) => {
   switch (tabId) {
     case 'home':
       return 'home'
-    case 'profile':
-      return 'account_circle'
+    case 'games':
+      return 'emoji_events'
     case 'settings':
       return 'settings'
-    case 'author':
+    case 'builders':
       return 'construction'
     default:
       return 'thumb_down_alt'
