@@ -6,6 +6,7 @@ import Table from './Table'
 
 const Take6Box = styled.section`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;

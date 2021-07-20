@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Theme from './Theme'
 
 const StyledSettings = styled.section`
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

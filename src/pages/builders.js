@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { nextReduxWrapper } from '../app/store'
 import Main from '../components/Main'
 import UniHeader from '../components/UniHeader'
+import BuildersIndex from '../components/builders/Index'
 import { initBuilders } from '../features/pagesSlice'
 
 export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async (_context) => {
@@ -22,6 +23,7 @@ const Builders = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <UniHeader />
+    <BuildersIndex />
   </Main>
 )
 

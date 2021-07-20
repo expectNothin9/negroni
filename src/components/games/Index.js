@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Take6 from './Take6'
 
 const StyledGames = styled.section`
-  height: 100%;
+  padding-bottom: 12px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

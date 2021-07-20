@@ -34,12 +34,6 @@ a {
   --on-surface: #212121;
   --divider: #bdbdbd;
 }
-html,
-body,
-body > div,
-main {
-  height: 100%;
-}
 
 main.dark {
   --primary: #7e57c2;
