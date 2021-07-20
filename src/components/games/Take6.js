@@ -17,10 +17,18 @@ const Aside = styled.aside`
   padding: 12px;
   border-radius: 4px;
   margin-right: 12px;
+  @media only screen and (max-width: 768px) {
+    padding: 6px;
+    width: 72px;
+    margin-right: 6px;
+  }
 `
 const TableBox = styled(Section)`
   height: calc(100vh - 60px - 12px);
   margin: 0 12px;
+  @media only screen and (max-width: 768px) {
+    margin: 0 6px;
+  }
 `
 const Title = styled.h2`
   color: var(--on-surface);
@@ -30,6 +38,9 @@ const Title = styled.h2`
   text-align: center;
   border-bottom: 1px solid var(--divider);
   margin-bottom: 12px;
+  @media only screen and (max-width: 768px) {
+    font-size: 18px;
+  }
 `
 const Take6 = () => (
   <Take6Box className="take-6">
