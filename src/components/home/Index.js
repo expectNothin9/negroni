@@ -18,7 +18,7 @@ const LogoBox = styled.div`
   }
   h1.brand-name {
     position: absolute;
-    top: 35vmin;
+    top: 35.3vmin;
     width: 36vmin;
     padding-top: 1.5vmin;
     border-top: 0.5vmin solid var(--on-surface);
@@ -47,7 +47,7 @@ const LogoBox = styled.div`
 `
 const Logo = () => {
   const theme = useSelector(({ pages }) => pages.theme)
-  const logoSrc = theme === 'light' ? '/img/agln_000000.png' : '/img/agln_ffffff.png'
+  const logoSrc = theme === 'light' ? '/img/agln_dark.svg' : '/img/agln_light.svg'
   return (
     <LogoBox>
       {/* eslint-disable-next-line @next/next/no-img-element */}
