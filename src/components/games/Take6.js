@@ -38,7 +38,7 @@ const Playground = styled.section`
   border-radius: 4px;
   @media only screen and (max-width: 768px) {
     width: calc(100% - 72px - 6px); /* Aside, gap */
-    height: calc(100vh - 48px - 40px - calc(6px * 3)); /* UniHeader, GameStatus, gaps */
+    height: calc(100vh - 48px - 28px - calc(6px * 3)); /* UniHeader, GameStatus, gaps */
     padding: 6px;
   }
 `
@@ -50,6 +50,7 @@ const Box = styled.div`
   margin-top: 12px;
   padding-bottom: 12px;
   @media only screen and (max-width: 768px) {
+    width: calc(100% - 12px);
     margin-top: 6px;
     padding-bottom: 6px;
   }
