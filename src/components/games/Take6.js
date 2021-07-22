@@ -18,6 +18,7 @@ const Take6Box = styled.section`
 const Aside = styled.aside`
   background-color: var(--surface);
   color: var(--on-surface);
+  width: 184px;
   padding: 12px;
   border-radius: 4px;
   margin-left: 12px;
@@ -31,12 +32,14 @@ const Playground = styled.section`
   background-color: var(--surface);
   color: var(--on-surface);
   flex-grow: 1;
+  width: calc(100% - 184px - 12px); /* Aside, gap */
   height: calc(100vh - 48px - 40px - calc(12px * 3)); /* UniHeader, GameStatus, gaps */
   padding: 12px;
   border-radius: 4px;
   @media only screen and (max-width: 768px) {
-    padding: 6px;
+    width: calc(100% - 72px - 6px); /* Aside, gap */
     height: calc(100vh - 48px - 40px - calc(6px * 3)); /* UniHeader, GameStatus, gaps */
+    padding: 6px;
   }
 `
 const Box = styled.div`

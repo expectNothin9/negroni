@@ -6,7 +6,6 @@ const HandCardsList = styled.ul`
   li {
     width: 10%;
     height: 100%;
-
     input[type='checkbox'] {
       display: none;
     }
@@ -14,7 +13,7 @@ const HandCardsList = styled.ul`
       width: 100%;
       height: 100%;
       background-color: var(--primary-light);
-      border: 4px solid var(--surface);
+      border: 2px solid var(--surface);
       border-radius: 6px;
       position: relative;
       display: flex;
@@ -27,8 +26,11 @@ const HandCardsList = styled.ul`
         font-size: 1.5vh;
       }
       span {
-        font-size: 5.25vh;
+        font-size: 3.25vh;
       }
+    }
+    input:checked + label {
+      border-color: var(--on-surface);
     }
   }
 `
@@ -39,6 +41,11 @@ const HandCardsBox = styled.div`
   border-bottom: 1px solid var(--divider);
   margin-bottom: 12px;
   position: relative;
+  @media only screen and (max-width: 768px) {
+    height: calc(20% - 7px);
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+  }
 `
 const Title = styled.p`
   position: absolute;

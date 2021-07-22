@@ -8,7 +8,7 @@ const List = styled.ul`
 const MemberItem = styled.li`
   background-color: var(--surface-dark);
   color: var(--on-surface);
-  width: 180px;
+  width: 160px;
   padding: 12px;
   margin-bottom: 12px;
   display: flex;

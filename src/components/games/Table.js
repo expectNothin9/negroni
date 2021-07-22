@@ -21,6 +21,10 @@ const GridBox = styled.div`
   grid-template-rows: 1fr 1fr 1fr 1fr;
   column-gap: 12px;
   row-gap: 12px;
+  @media only screen and (max-width: 768px) {
+    column-gap: 6px;
+    row-gap: 6px;
+  }
 `
 const grids = {
   rows: [
