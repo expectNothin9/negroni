@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import Section from '../Section'
-
 const StyledGrid = styled.div`
   background-color: var(--surface-dark);
   color: var(--on-surface);
@@ -17,7 +15,7 @@ const StyledGrid = styled.div`
 `
 const Grid = ({ row, column }) => <StyledGrid className={`row-${row} column-${column}`} />
 const GridBox = styled.div`
-  height: 100%;
+  height: 80%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 8px 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;

@@ -1,10 +1,10 @@
 import Head from 'next/head'
 
-import { nextReduxWrapper } from '../app/store'
-import Main from '../components/Main'
-import UniHeader from '../components/UniHeader'
-import GamesIndex from '../components/games/Index'
-import { initGames } from '../features/pagesSlice'
+import { nextReduxWrapper } from '../../app/store'
+import Main from '../../components/Main'
+import UniHeader from '../../components/UniHeader'
+import GamesIndex from '../../components/games/Index'
+import { initGames } from '../../features/pagesSlice'
 
 export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async (_context) => {
   store.dispatch(

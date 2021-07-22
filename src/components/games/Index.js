@@ -1,19 +1,21 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 
-import Take6 from './Take6'
-
-const StyledGames = styled.section`
-  padding-bottom: 12px;
+const GamesBox = styled.section`
+  width: 100%;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  color: var(--on-background);
 `
 const GamesIndex = () => {
   return (
-    <StyledGames>
-      <Take6 />
-    </StyledGames>
+    <GamesBox>
+      <Link href="/games/take6">
+        <a>Take 6!</a>
+      </Link>
+    </GamesBox>
   )
 }
 

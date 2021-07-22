@@ -1,57 +1,69 @@
 import styled from 'styled-components'
 
-import Section from '../Section'
+import GameStatus from './GameStatus'
 import MembersList from './MembersList'
+import HandCards from './HandCards'
 import Table from './Table'
 
 const Take6Box = styled.section`
   width: 100%;
-  height: 100%;
+  padding-top: calc(48px + 12px); /* UniHeader + gap */
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  padding-top: 60px; /* UniHeader 48px + gap 12px */
+  flex-direction: column;
+  align-items: center;
+  @media only screen and (max-width: 768px) {
+    padding-top: calc(48px + 6px); /* UniHeader + gap */
+  }
 `
 const Aside = styled.aside`
   background-color: var(--surface);
+  color: var(--on-surface);
   padding: 12px;
   border-radius: 4px;
-  margin-right: 12px;
+  margin-left: 12px;
   @media only screen and (max-width: 768px) {
     padding: 6px;
     width: 72px;
-    margin-right: 6px;
+    margin-left: 6px;
   }
 `
-const TableBox = styled(Section)`
-  height: calc(100vh - 60px - 12px);
-  margin: 0 12px;
-  @media only screen and (max-width: 768px) {
-    margin: 0 6px;
-  }
-`
-const Title = styled.h2`
+const Playground = styled.section`
+  background-color: var(--surface);
   color: var(--on-surface);
-  font-size: 24px;
-  font-weight: bold;
-  padding: 6px 0 12px;
-  text-align: center;
-  border-bottom: 1px solid var(--divider);
-  margin-bottom: 12px;
+  flex-grow: 1;
+  height: calc(100vh - 48px - 40px - calc(12px * 3)); /* UniHeader, GameStatus, gaps */
+  padding: 12px;
+  border-radius: 4px;
   @media only screen and (max-width: 768px) {
-    font-size: 18px;
+    padding: 6px;
+    height: calc(100vh - 48px - 40px - calc(6px * 3)); /* UniHeader, GameStatus, gaps */
   }
 `
-const Take6 = () => (
+const Box = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  max-width: 1280px;
+  width: calc(100% - 24px);
+  margin-top: 12px;
+  padding-bottom: 12px;
+  @media only screen and (max-width: 768px) {
+    margin-top: 6px;
+    padding-bottom: 6px;
+  }
+`
+const Take6Index = () => (
   <Take6Box className="take-6">
-    <Aside>
-      <Title>Take 6!</Title>
-      <MembersList />
-    </Aside>
-    <TableBox>
-      <Table />
-    </TableBox>
+    <GameStatus />
+    <Box>
+      <Aside>
+        <MembersList />
+      </Aside>
+      <Playground>
+        <HandCards />
+        <Table />
+      </Playground>
+    </Box>
   </Take6Box>
 )
 
-export default Take6
+export default Take6Index
