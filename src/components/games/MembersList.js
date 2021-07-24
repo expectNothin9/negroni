@@ -3,16 +3,11 @@ import styled from 'styled-components'
 const List = styled.ul`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
 `
 const MemberItem = styled.li`
-  background-color: var(--surface-dark);
-  color: var(--on-surface);
-  width: 160px;
-  padding: 12px;
-  margin-bottom: 12px;
-  display: flex;
-  flex-direction: column;
+  width: 184px;
+  padding: var(--gap);
+  border-bottom: 1px solid var(--divider);
   .nickname {
     display: block;
     height: 18px;
@@ -22,16 +17,8 @@ const MemberItem = styled.li`
   .score {
     display: block;
     text-align: center;
-    margin-top: 6px;
-    font-size: 24px;
+    margin-top: calc(var(--gap) / 2);
     font-weight: bold;
-  }
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-    padding: 6px;
-    .score {
-      font-size: 18px;
-    }
   }
 `
 const MembersList = () => {

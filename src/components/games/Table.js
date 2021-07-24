@@ -15,23 +15,21 @@ const StyledGrid = styled.div`
 `
 const Grid = ({ row, column }) => <StyledGrid className={`row-${row} column-${column}`} />
 const GridBox = styled.div`
-  height: 80%;
+  padding: var(--gap);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 8px 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  column-gap: 12px;
-  row-gap: 12px;
-  @media only screen and (max-width: 768px) {
-    column-gap: 6px;
-    row-gap: 6px;
-  }
+  grid-template-columns: var(--card-w) var(--card-w) var(--card-w) var(--card-w) var(--card-w) var(
+      --card-w
+    );
+  grid-template-rows: var(--card-h) var(--card-h) var(--card-h) var(--card-h);
+  column-gap: var(--gap);
+  row-gap: var(--gap);
 `
 const grids = {
   rows: [
-    { id: 1, columns: [1, 2, 3, 4, 5, 6, 7] },
-    { id: 2, columns: [1, 2, 3, 4, 5, 6, 7] },
-    { id: 3, columns: [1, 2, 3, 4, 5, 6, 7] },
-    { id: 4, columns: [1, 2, 3, 4, 5, 6, 7] }
+    { id: 1, columns: [1, 2, 3, 4, 5, 6] },
+    { id: 2, columns: [1, 2, 3, 4, 5, 6] },
+    { id: 3, columns: [1, 2, 3, 4, 5, 6] },
+    { id: 4, columns: [1, 2, 3, 4, 5, 6] }
   ]
 }
 const Table = () => {

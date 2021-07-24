@@ -1,56 +1,31 @@
 import styled from 'styled-components'
 
+import Card from './Card'
+
 const HandCardsList = styled.ul`
   height: 100%;
   display: flex;
   li {
-    width: 10%;
-    height: 100%;
+    padding: calc(var(--gap) / 2);
     input[type='checkbox'] {
       display: none;
     }
     label {
-      width: 100%;
-      height: 100%;
+      box-sizing: content-box;
+      width: var(--card-w);
+      height: var(--card-h);
       background-color: var(--primary-light);
-      border: 2px solid var(--surface);
       border-radius: 6px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      em {
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        font-size: 1.5vh;
-      }
-      span {
-        font-size: 3.25vh;
-      }
     }
     input:checked + label {
       border-color: var(--on-surface);
     }
   }
 `
-const HandCardsBox = styled.div`
+const Box = styled.div`
   width: 100%;
-  height: calc(20% - 13px);
-  padding-bottom: 12px;
+  padding: calc(var(--gap) / 2);
   border-bottom: 1px solid var(--divider);
-  margin-bottom: 12px;
-  position: relative;
-  @media only screen and (max-width: 768px) {
-    height: calc(20% - 7px);
-    padding-bottom: 6px;
-    margin-bottom: 6px;
-  }
-`
-const Title = styled.p`
-  position: absolute;
-  top: -18px;
-  left: 12px;
 `
 const HandCards = () => {
   const cards = [
@@ -61,30 +36,28 @@ const HandCards = () => {
     { id: 11, point: 5 },
     { id: 12, point: 1 },
     { id: 13, point: 1 },
-    { id: 14, point: 1 },
+    { id: 104, point: 1 },
     { id: 15, point: 2 },
     { id: 16, point: 1 }
   ]
   return (
-    <HandCardsBox>
-      <Title>hand cards</Title>
+    <Box className="hand-cards">
       <HandCardsList>
         {cards.map((card, idx) => (
           <li key={card.id}>
             <input
               type="checkbox"
-              id={`handcard-${idx + 1}`}
-              name={`handcard-${idx + 1}`}
+              id={`handc-ard-${idx + 1}`}
+              name={`hand-card-${idx + 1}`}
               value={card.id}
             />
-            <label htmlFor={`handcard-${idx + 1}`}>
-              <em>{card.point}</em>
-              <span>{card.id}</span>
+            <label htmlFor={`hand-card-${idx + 1}`}>
+              <Card card={card} />
             </label>
           </li>
         ))}
       </HandCardsList>
-    </HandCardsBox>
+    </Box>
   )
 }
 
