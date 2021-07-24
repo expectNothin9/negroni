@@ -1,4 +1,4 @@
-import { changeTheme } from './pagesSlice'
+import { changeTheme } from './pageSlice'
 import { isBrowser } from '../utils'
 
 const applicationMiddleware = (store) => (next) => (action) => {

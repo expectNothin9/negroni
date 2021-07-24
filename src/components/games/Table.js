@@ -1,19 +1,31 @@
 import styled from 'styled-components'
 
+import Icon from '../Icon'
+
 const StyledGrid = styled.div`
   background-color: var(--surface-dark);
   color: var(--on-surface);
   width: 100%;
   height: 100%;
   border-radius: 4px;
+  position: relative;
   &.column-1 {
     background-color: var(--primary);
   }
-  &.column-6 {
-    background-color: var(--primary);
+  i {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: var(--background);
   }
 `
-const Grid = ({ row, column }) => <StyledGrid className={`row-${row} column-${column}`} />
+const Grid = ({ row, column }) => (
+  <StyledGrid className={`row-${row} column-${column}`}>
+    {column === 6 && <Icon type="warning" />}
+  </StyledGrid>
+)
 const GridBox = styled.div`
   padding: var(--gap);
   display: grid;

@@ -104,3 +104,5 @@ export const TAKE6_CARDS = [
   { id: 103, point: 1 },
   { id: 104, point: 1 }
 ]
+
+export const TAKE6_INITIAL_SCORE = 66

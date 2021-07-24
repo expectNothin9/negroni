@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { initHome, initGames, initSettings, initBuilders } from './pagesSlice'
+import { initHome, initGames, initSettings, initBuilders } from './pageSlice'
 
 const initialState = {
   activeTab: 'home',

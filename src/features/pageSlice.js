@@ -5,8 +5,8 @@ const initialState = {
   theme: 'light'
 }
 
-export const pagesSlice = createSlice({
-  name: 'pages',
+export const pageSlice = createSlice({
+  name: 'page',
   initialState,
   reducers: {
     changeTheme: (state, action) => {
@@ -27,6 +27,6 @@ export const pagesSlice = createSlice({
   }
 })
 
-export const { changeTheme, initHome, initGames, initSettings, initBuilders } = pagesSlice.actions
+export const { changeTheme, initHome, initGames, initSettings, initBuilders } = pageSlice.actions
 
-export default pagesSlice.reducer
+export default pageSlice.reducer

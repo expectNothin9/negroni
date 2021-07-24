@@ -2,14 +2,16 @@ import { combineReducers } from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 
+import pageReducer from '../features/pageSlice'
 import navReducer from '../features/navSlice'
-import pagesReducer from '../features/pagesSlice'
+import gameReducer from '../features/gameSlice'
 
 import applicationMiddleware from '../features/middleware'
 
 const combinedReducer = combineReducers({
+  page: pageReducer,
   nav: navReducer,
-  pages: pagesReducer
+  game: gameReducer
 })
 
 const hydratedReducer = (state, action) => {
