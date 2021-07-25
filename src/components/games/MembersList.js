@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 const List = styled.ul`
@@ -22,43 +23,7 @@ const MemberItem = styled.li`
   }
 `
 const MembersList = () => {
-  const members = [
-    {
-      id: '1',
-      nickname: 'Abcde',
-      score: 66
-    },
-    {
-      id: '2',
-      nickname: 'Fghi',
-      score: 66
-    },
-    {
-      id: '3',
-      nickname: 'Jklmnop',
-      score: 66
-    },
-    {
-      id: '4',
-      nickname: 'Qrst',
-      score: 66
-    },
-    {
-      id: '5',
-      nickname: 'Uvw',
-      score: 66
-    },
-    {
-      id: '6',
-      nickname: 'Xyz',
-      score: 66
-    },
-    {
-      id: '7',
-      nickname: 'Abcdefghijklmnopqrstuvwxyz',
-      score: 66
-    }
-  ]
+  const members = useSelector(({ game }) => game.tables[0]?.game.state.members)
   return (
     <List className="members-list">
       {members.map((member) => (

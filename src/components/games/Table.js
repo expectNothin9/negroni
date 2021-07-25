@@ -1,6 +1,8 @@
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import Icon from '../Icon'
+import Card from './Card'
 
 const StyledGrid = styled.div`
   background-color: var(--surface-dark);
@@ -21,9 +23,10 @@ const StyledGrid = styled.div`
     color: var(--background);
   }
 `
-const Grid = ({ row, column }) => (
+const Grid = ({ row, column, children }) => (
   <StyledGrid className={`row-${row} column-${column}`}>
     {column === 6 && <Icon type="warning" />}
+    {children}
   </StyledGrid>
 )
 const GridBox = styled.div`
@@ -45,12 +48,18 @@ const grids = {
   ]
 }
 const Table = () => {
+  const gameState = useSelector(({ game }) => game.tables[0]?.game.state)
   return (
     <GridBox className="table">
       {grids.rows.map((row) =>
-        row.columns.map((columnId) => (
-          <Grid key={`${row.id}-${columnId}`} row={row.id} column={columnId} />
-        ))
+        row.columns.map((columnId) => {
+          const card = gameState[`row${row.id}`][columnId - 1]
+          return (
+            <Grid key={`${row.id}-${columnId}`} row={row.id} column={columnId}>
+              {card && <Card card={card} />}
+            </Grid>
+          )
+        })
       )}
     </GridBox>
   )

@@ -4,6 +4,7 @@ import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 
 import pageReducer from '../features/pageSlice'
 import navReducer from '../features/navSlice'
+import userReducer from '../features/userSlice'
 import gameReducer from '../features/gameSlice'
 
 import applicationMiddleware from '../features/middleware'
@@ -11,6 +12,7 @@ import applicationMiddleware from '../features/middleware'
 const combinedReducer = combineReducers({
   page: pageReducer,
   nav: navReducer,
+  user: userReducer,
   game: gameReducer
 })
 

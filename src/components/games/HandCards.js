@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import Card from './Card'
@@ -28,22 +29,15 @@ const Box = styled.div`
   border-bottom: 1px solid var(--divider);
 `
 const HandCards = () => {
-  const cards = [
-    { id: 7, point: 1 },
-    { id: 8, point: 1 },
-    { id: 9, point: 1 },
-    { id: 10, point: 3 },
-    { id: 11, point: 5 },
-    { id: 12, point: 1 },
-    { id: 13, point: 1 },
-    { id: 104, point: 1 },
-    { id: 15, point: 2 },
-    { id: 16, point: 1 }
-  ]
+  const selfUserId = useSelector(({ user }) => user.selfUserId)
+  const handCards = useSelector(
+    ({ game }) =>
+      game.tables[0]?.game.state.members.find((member) => member.id === selfUserId)?.handCards
+  )
   return (
     <Box className="hand-cards">
       <HandCardsList>
-        {cards.map((card, idx) => (
+        {handCards.map((card, idx) => (
           <li key={card.id}>
             <input
               type="checkbox"
