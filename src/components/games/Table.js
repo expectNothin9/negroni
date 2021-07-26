@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import Icon from '../Icon'
@@ -61,6 +60,5 @@ const Table = ({ gameState }) => (
     )}
   </GridBox>
 )
-
 
 export default Table
