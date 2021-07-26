@@ -7,11 +7,15 @@ The [Negroni](https://negroni.vercel.app/) is a popular Italian cocktail, made o
 - [ ] TAKE 6!
 - [ ] LINE chatroom
 
+## LINE Login integration
+
+Documentation of [integrating LINE Login with web app](https://developers.line.biz/zh-hant/docs/line-login/integrate-line-login/).
+
 ## Vecteezy
 
 [Vecteezy Editor](https://www.vecteezy.com/editor) is free online SVG editor where logo is made.
 
-## Material Icons adn Palette
+## Material Icons and Palette
 
 Using [web font approach](https://github.com/google/material-design-icons#using-a-font) to adopt Material Icons. And can search icons at [fonts.google.com/icons](https://fonts.google.com/icons).
 
