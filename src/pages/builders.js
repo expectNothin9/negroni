@@ -4,7 +4,7 @@ import { nextReduxWrapper } from '../app/store'
 import Main from '../components/Main'
 import UniHeader from '../components/UniHeader'
 import BuildersIndex from '../components/builders/Index'
-import { initBuilders } from '../features/pagesSlice'
+import { initBuilders } from '../features/pageSlice'
 
 export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async (_context) => {
   store.dispatch(

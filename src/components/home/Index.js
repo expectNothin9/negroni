@@ -46,7 +46,7 @@ const LogoBox = styled.div`
   }
 `
 const Logo = () => {
-  const theme = useSelector(({ pages }) => pages.theme)
+  const theme = useSelector(({ page }) => page.theme)
   const logoSrc = theme === 'light' ? '/img/agln_dark.svg' : '/img/agln_light.svg'
   return (
     <LogoBox>
