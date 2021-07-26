@@ -4,7 +4,7 @@ import { nextReduxWrapper } from '../app/store'
 import Main from '../components/Main'
 import UniHeader from '../components/UniHeader'
 import SettingsIndex from '../components/settings/Index'
-import { initSettings } from '../features/pagesSlice'
+import { initSettings } from '../features/pageSlice'
 
 export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async (_context) => {
   store.dispatch(

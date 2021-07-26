@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import Section from '../Section'
 import Icon from '../Icon'
-import { changeTheme } from '../../features/pagesSlice'
+import { changeTheme } from '../../features/pageSlice'
 
 const Caption = styled.h3`
   color: var(--on-surface);
@@ -38,7 +38,7 @@ const RadioBox = styled.div`
 `
 const Theme = () => {
   const dispatch = useDispatch()
-  const theme = useSelector(({ pages }) => pages.theme)
+  const theme = useSelector(({ page }) => page.theme)
   const handleChangeTheme = useCallback(
     (event) => dispatch(changeTheme({ theme: event.target.value })),
     [dispatch]
