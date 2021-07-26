@@ -24,14 +24,21 @@ const MemberItem = styled.li`
 `
 const MembersList = () => {
   const members = useSelector(({ game }) => game.tables[0]?.game.state.members)
+  console.log('members', members)
+  const hasMembers = members && members.length > 0
+  if (hasMembers) {
+    return null
+  }
+
   return (
     <List className="members-list">
-      {members.map((member) => (
-        <MemberItem key={member.id}>
-          <span className="nickname">{member.nickname}</span>
-          <em className="score">{member.score}</em>
-        </MemberItem>
-      ))}
+      {members &&
+        members.map((member) => (
+          <MemberItem key={member.id}>
+            <span className="nickname">{member.nickname}</span>
+            <em className="score">{member.score}</em>
+          </MemberItem>
+        ))}
     </List>
   )
 }
