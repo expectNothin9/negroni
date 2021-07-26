@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import MembersList from './MembersList'
@@ -29,16 +30,25 @@ const Take6Box = styled.section`
     --gap: 6px;
   }
 `
-const Take6Index = () => (
-  <Take6Box className="take-6">
-    <Aside>
-      <MembersList />
-    </Aside>
-    <Playground>
-      <HandCards />
-      <Table />
-    </Playground>
-  </Take6Box>
-)
+const Take6Index = () => {
+  const table = useSelector(({ game }) => game.tables[0])
+  const selfUserId = useSelector(({ user }) => user.selfUserId)
+  if (!table) {
+    return null
+  }
+  const gameState = table.game.state
+  const handCards = gameState.members.find((member) => member.id === selfUserId).handCards
+  return (
+    <Take6Box className="take-6">
+      <Aside>
+        <MembersList members={gameState.members} />
+      </Aside>
+      <Playground>
+        <HandCards handCards={handCards} />
+        <Table gameState={gameState} />
+      </Playground>
+    </Take6Box>
+  )
+}
 
 export default Take6Index

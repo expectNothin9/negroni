@@ -47,22 +47,20 @@ const grids = {
     { id: 4, columns: [1, 2, 3, 4, 5, 6] }
   ]
 }
-const Table = () => {
-  const gameState = useSelector(({ game }) => game.tables[0]?.game.state)
-  return (
-    <GridBox className="table">
-      {grids.rows.map((row) =>
-        row.columns.map((columnId) => {
-          const card = gameState[`row${row.id}`][columnId - 1]
-          return (
-            <Grid key={`${row.id}-${columnId}`} row={row.id} column={columnId}>
-              {card && <Card card={card} />}
-            </Grid>
-          )
-        })
-      )}
-    </GridBox>
-  )
-}
+const Table = ({ gameState }) => (
+  <GridBox className="table">
+    {grids.rows.map((row) =>
+      row.columns.map((columnId) => {
+        const card = gameState[`row${row.id}`][columnId - 1]
+        return (
+          <Grid key={`${row.id}-${columnId}`} row={row.id} column={columnId}>
+            {card && <Card card={card} />}
+          </Grid>
+        )
+      })
+    )}
+  </GridBox>
+)
+
 
 export default Table
