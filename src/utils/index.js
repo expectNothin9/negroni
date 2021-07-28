@@ -1,5 +1,3 @@
-const { LINE_LOGIN_CHANNEL_ID, LINE_LOGIN_CHANNEL_CALLBACK_URL } = process.env
-
 /**
  * @param {string} tabId
  * @returns {string}
@@ -39,15 +37,15 @@ export const getNavTabIconType = (tabId) => {
 }
 
 /**
- * @param {string} state
+ * @param {{ state: string, clientId: string, redirectUri: string}} param
  * @returns {string}
  */
-export const getLineAuthorizeUrl = (state) => {
+export const getLineAuthorizeUrl = ({ state, clientId, redirectUri }) => {
   const lineAuthorizeUrl = 'https://access.line.me/oauth2/v2.1/authorize'
   const qs = new URLSearchParams()
   qs.append('response_type', 'code')
-  qs.append('client_id', LINE_LOGIN_CHANNEL_ID)
-  qs.append('redirect_uri', LINE_LOGIN_CHANNEL_CALLBACK_URL)
+  qs.append('client_id', clientId)
+  qs.append('redirect_uri', redirectUri)
   qs.append('state', state)
   qs.append('scope', 'profile openid')
   // for Reply attack protection, https://en.wikipedia.org/wiki/Replay_attack

@@ -31,9 +31,14 @@ export const getServerSideProps = nextReduxWrapper.getServerSideProps(
     }
 
     if (needLogin) {
+      const { LINE_LOGIN_CHANNEL_ID, LINE_LOGIN_CHANNEL_CALLBACK_URL } = process.env
       return {
         redirect: {
-          destination: getLineAuthorizeUrl('PLAY_TAKE6'),
+          destination: getLineAuthorizeUrl({
+            state: 'PLAY_TAKE6',
+            clientId: LINE_LOGIN_CHANNEL_ID,
+            redirectUri: LINE_LOGIN_CHANNEL_CALLBACK_URL
+          }),
           statusCode: 302
         }
       }
