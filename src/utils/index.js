@@ -1,3 +1,5 @@
+const { LINE_LOGIN_CHANNEL_ID, LINE_LOGIN_CHANNEL_CALLBACK_URL } = process.env
+
 /**
  * @param {string} tabId
  * @returns {string}
@@ -37,6 +39,23 @@ export const getNavTabIconType = (tabId) => {
 }
 
 /**
+ * @param {string} state
+ * @returns {string}
+ */
+export const getLineAuthorizeUrl = (state) => {
+  const lineAuthorizeUrl = 'https://access.line.me/oauth2/v2.1/authorize'
+  const qs = new URLSearchParams()
+  qs.append('response_type', 'code')
+  qs.append('client_id', LINE_LOGIN_CHANNEL_ID)
+  qs.append('redirect_uri', LINE_LOGIN_CHANNEL_CALLBACK_URL)
+  qs.append('state', state)
+  qs.append('scope', 'profile openid')
+  // for Reply attack protection, https://en.wikipedia.org/wiki/Replay_attack
+  // qs.append('nonce', '09876xyz')
+  return `${lineAuthorizeUrl}?${qs.toString()}`
+}
+
+/**
  * @returns {boolean}
  */
 export const isBrowser = () => typeof window !== 'undefined'
@@ -53,7 +72,7 @@ export const shuffle = (array) => {
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
     // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
+    randomIndex = Math.floor(Math.random() * currentIndex)
     currentIndex--
 
     // And swap it with the current element.
