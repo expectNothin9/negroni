@@ -22,6 +22,7 @@ const fetchLineUserProfile = async (id_token) => {
   const qs = new URLSearchParams()
   qs.append('id_token', id_token)
   qs.append('client_id', LINE_LOGIN_CHANNEL_ID)
+  console.log('fetchLineUserProfile qs:', qs.toString())
   return await fetch('https://api.line.me/oauth2/v2.1/verify', {
     method: 'POST',
     headers: {
@@ -42,6 +43,7 @@ const handler = async (req, res) => {
 
     try {
       const tokenResponse = await fetchLineAccessToken(code)
+      console.log('tokenResponse', tokenResponse)
       const profileResponse = await fetchLineUserProfile(tokenResponse.id_token)
       return res.status(200).json({ profileResponse })
     } catch (e) {
