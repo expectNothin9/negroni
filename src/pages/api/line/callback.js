@@ -8,18 +8,18 @@ const handler = async (req, res) => {
     const { code, error } = query
     if (code) {
       try {
+        const qs = new URLSearchParams()
+        qs.append('grant_type', 'authorization_code')
+        qs.append('code', code)
+        qs.append('redirect_uri', LINE_LOGIN_CHANNEL_CALLBACK_URL)
+        qs.append('client_id', LINE_LOGIN_CHANNEL_ID)
+        qs.append('client_secret', LINE_LOGIN_CHANNEL_SECRET)
         const response = await fetch('https://api.line.me/oauth2/v2.1/token', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/x-www-form-urlencoded'
           },
-          body: JSON.stringify({
-            grant_type: 'authorization_code',
-            code,
-            redirect_uri: LINE_LOGIN_CHANNEL_CALLBACK_URL,
-            client_id: LINE_LOGIN_CHANNEL_ID,
-            client_secret: LINE_LOGIN_CHANNEL_SECRET
-          })
+          body: qs.toString()
         }).then((resp) => resp.json())
         res.status(200).json({ tokenResponse: response })
       } catch (e) {
