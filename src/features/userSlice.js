@@ -14,7 +14,9 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: {
     [initGames]: (state, action) => {
-      state.selfUserId = action.payload.user?.selfUserId
+      if (action.payload.user) {
+        state.selfUserId = action.payload.user.selfUserId
+      }
     },
     [fetchUser.fulfilled]: (state, action) => {
       state.users.push(action.payload.user)
