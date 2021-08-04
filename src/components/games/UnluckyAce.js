@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
-import { getLineAuthorizeUrl } from '../../utils'
+import { getApiLineAuthorizeUrl } from '../../utils'
 
 const UserBox = styled.div``
 const User = ({ id }) => <UserBox>userId: {id}</UserBox>
 
 const StyledLoginLink = styled.a``
 const LoginLink = () => (
-  <StyledLoginLink href={getLineAuthorizeUrl({ state: 'UNLUCKY_ACE' })}>Login</StyledLoginLink>
+  <StyledLoginLink href={getApiLineAuthorizeUrl({ state: 'UNLUCKY_ACE' })}>Login</StyledLoginLink>
 )
 
 const UnluckyAceBox = styled.section`

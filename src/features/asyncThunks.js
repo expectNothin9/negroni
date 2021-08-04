@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-const API_HOST = process.env.API_HOST
-const DGRAPH_CLOUD_GQL = process.env.DGRAPH_CLOUD_GQL
+const API_HOST = process.env.NEXT_PUBLIC_API_HOST
+const DGRAPH_CLOUD_GQL = process.env.NEXT_PUBLIC_DGRAPH_CLOUD_GQL
 
 export const fetchTable = createAsyncThunk('game/fetchTable', async ({ tableId }) => {
   const response = await fetch(`${API_HOST}/api/tables/${tableId}`).then((resp) => resp.json())

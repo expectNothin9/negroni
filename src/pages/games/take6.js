@@ -3,7 +3,7 @@ import Cookies from 'cookies'
 import dayjs from 'dayjs'
 
 import { nextReduxWrapper } from '../../app/store'
-import { getLineAuthorizeUrl } from '../../utils'
+import { getApiLineAuthorizeUrl } from '../../utils'
 import Main from '../../components/Main'
 import UniHeader from '../../components/UniHeader'
 import Take6Index from '../../components/games/Take6'
@@ -32,7 +32,7 @@ export const getServerSideProps = nextReduxWrapper.getServerSideProps(
     if (needLogin) {
       return {
         redirect: {
-          destination: getLineAuthorizeUrl({
+          destination: getApiLineAuthorizeUrl({
             state: 'PLAY_TAKE6'
           }),
           statusCode: 302
