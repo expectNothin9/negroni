@@ -6,6 +6,7 @@ import { changeTheme } from '../features/pageSlice'
 
 const StyledMain = styled.main`
   background-color: var(--background);
+  color: var(--on-background);
 `
 const Main = ({ children }) => {
   const dispatch = useDispatch()
