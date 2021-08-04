@@ -6,6 +6,11 @@ The [Negroni](https://negroni.vercel.app/) is a popular Italian cocktail, made o
 
 - [ ] TAKE 6!
 - [ ] LINE chatroom
+- [ ] [Semantic UI React](https://react.semantic-ui.com/)
+
+## Dgraph Cloud
+
+Use [Dgraph Cloud](https://cloud.dgraph.io/_/dashboard) as serverless database solution and provide GraphQL backend API service. For GraphQL Schema, Mutations, Queries can read [Dgraph learning course](https://dgraph.io/learn/courses/messageboardapp/react/develop/graphql/design-app-schema/) for better understanding.
 
 ## LINE Login integration
 

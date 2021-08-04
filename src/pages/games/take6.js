@@ -10,7 +10,7 @@ import Take6Index from '../../components/games/Take6'
 import { initGames } from '../../features/pageSlice'
 import { fetchTable } from '../../features/asyncThunks'
 
-const { COOKIES_KEY, LINE_LOGIN_CHANNEL_ID, LINE_LOGIN_CHANNEL_CALLBACK_URL } = process.env
+const { COOKIES_KEY } = process.env
 export const getServerSideProps = nextReduxWrapper.getServerSideProps(
   (store) => async (context) => {
     let needLogin = false
@@ -33,9 +33,7 @@ export const getServerSideProps = nextReduxWrapper.getServerSideProps(
       return {
         redirect: {
           destination: getLineAuthorizeUrl({
-            state: 'PLAY_TAKE6',
-            clientId: LINE_LOGIN_CHANNEL_ID,
-            redirectUri: LINE_LOGIN_CHANNEL_CALLBACK_URL
+            state: 'PLAY_TAKE6'
           }),
           statusCode: 302
         }

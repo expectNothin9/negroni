@@ -1,6 +1,8 @@
 import Cookies from 'cookies'
 import dayjs from 'dayjs'
 
+import { gqlGetUser, gqlAddUser } from '../../../features/asyncThunks'
+
 const {
   LINE_LOGIN_CHANNEL_ID,
   LINE_LOGIN_CHANNEL_SECRET,
@@ -42,7 +44,17 @@ const fetchLineUserProfile = async (id_token) => {
 const handler = async (req, res) => {
   // https://developers.line.biz/zh-hant/docs/line-login/integrate-line-login/#receiving-the-authorization-code-or-error-response-with-a-web-app
   const { query } = req
-  if (query.state === 'PLAY_TAKE6') {
+  if (query.state) {
+    let originUrl = '/'
+    switch (query.state) {
+      case 'PLAY_TAKE6':
+        originUrl = '/games/take6'
+        break
+      case 'UNLUCKY_ACE':
+        originUrl = '/games/unlucky-ace'
+        break
+    }
+
     if (query.error) {
       return res.status(400).json(query)
     }
@@ -56,18 +68,26 @@ const handler = async (req, res) => {
       if (profileResp.error) {
         return res.status(400).json(profileResp)
       }
-      const { sub: userId, name } = profileResp
-      // TODO: update userId, name, picture to database
-      console.log(`userId: ${userId}, name: ${name}`)
+      const user = {
+        id: profileResp.sub,
+        name: profileResp.name,
+        avatarImage: profileResp.picture
+      }
+      console.log('user', user)
+      const gqlGetUserResp = await gqlAddUser({ user })
+      if (gqlGetUserResp.errors) {
+        throw new Error(gqlGetUserResp.errors[0].message)
+      }
+
       const cookies = new Cookies(req, res, { keys: [COOKIES_KEY] })
-      cookies.set('userId', userId)
-      cookies.set('name', name)
+      cookies.set('userId', user.id, { signed: true })
       cookies.set('t', dayjs().format(), { signed: true })
-      return res.redirect('/games/take6')
+      return res.redirect(originUrl)
     } catch (e) {
       return res.status(200).json({ error: e })
     }
   }
+
   res.status(200).json(query)
 }
 

@@ -1,16 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { fetchTable } from './asyncThunks'
+import { fetchUser } from './asyncThunks'
+import { initGames } from './pageSlice'
 
 const initialState = {
-  selfUserId: 'USER_1'
+  selfUserId: null,
+  users: []
 }
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {},
-  extraReducers: {}
+  extraReducers: {
+    [initGames]: (state, action) => {
+      state.selfUserId = action.payload.user?.selfUserId
+    },
+    [fetchUser.fulfilled]: (state, action) => {
+      state.users.push(action.payload.user)
+    }
+  }
 })
 
 export const {} = userSlice.actions
