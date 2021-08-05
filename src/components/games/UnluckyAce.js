@@ -1,15 +1,6 @@
-import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
-import { getApiLineAuthorizeUrl } from '../../utils'
-
-const UserBox = styled.div``
-const User = ({ id }) => <UserBox>userId: {id}</UserBox>
-
-const StyledLoginLink = styled.a``
-const LoginLink = () => (
-  <StyledLoginLink href={getApiLineAuthorizeUrl({ state: 'UNLUCKY_ACE' })}>Login</StyledLoginLink>
-)
+import User from './User'
 
 const UnluckyAceBox = styled.section`
   --gap: 12px;
@@ -21,10 +12,9 @@ const UnluckyAceBox = styled.section`
   align-items: center;
 `
 const UnluckyAceIndex = () => {
-  const selfUserId = useSelector(({ user }) => user.selfUserId)
   return (
-    <UnluckyAceBox className="take-6">
-      {selfUserId ? <User id={selfUserId} /> : <LoginLink />}
+    <UnluckyAceBox className="unlucky-ace">
+      <User />
     </UnluckyAceBox>
   )
 }
