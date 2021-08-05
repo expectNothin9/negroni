@@ -12,8 +12,8 @@ const GamesBox = styled.section`
 const GamesIndex = () => {
   return (
     <GamesBox>
-      <Link href="/games/take6">
-        <a>Take 6!</a>
+      <Link href="/games/unlucky-ace">
+        <a>Unlucky ACE!</a>
       </Link>
     </GamesBox>
   )
