@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { fetchTable } from './asyncThunks'
+import { fetchCreateTable } from './asyncThunks'
 
 const initialState = {
-  tables: []
+  games: ['UNLUCKY_ACE'],
+  table: null // { id, ownerId, memberIds }
 }
 
 export const gameSlice = createSlice({
@@ -11,8 +12,8 @@ export const gameSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchTable.fulfilled]: (state, action) => {
-      state.tables.push(action.payload.table)
+    [fetchCreateTable.fulfilled]: (state, action) => {
+      state.tables = action.payload.table
     }
   }
 })
