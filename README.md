@@ -7,6 +7,7 @@ The [Negroni](https://negroni.vercel.app/) is a popular Italian cocktail, made o
 - [ ] TAKE 6!
 - [ ] LINE chatroom
 - [ ] [Semantic UI React](https://react.semantic-ui.com/)
+- [ ] [Vercel realtime solutions](https://vercel.com/docs/solutions/realtime): [Pusher Channels](https://vercel.com/guides/deploying-pusher-channels-with-vercel) with vercel guide and [code example](https://github.com/vercel/vercel/tree/main/examples/vanilla-pusher-functions)
 
 ## Dgraph Cloud
 
@@ -18,7 +19,7 @@ Documentation of [integrating LINE Login with web app](https://developers.line.b
 
 ## Vecteezy
 
-[Vecteezy Editor](https://www.vecteezy.com/editor) is free online SVG editor where logo is made.
+[Vecteezy Editor](https://www.vecteezy.com/editor) is free online SVG editor where logo is made. And the representative font is [`'Acme'`](https://fonts.google.com/specimen/Acme).
 
 ## Material Icons and Palette
 
