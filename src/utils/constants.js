@@ -1,3 +1,10 @@
+export const GAMES = {
+  UNLUCKY_ACE: {
+    id: 'UNLUCKY_ACE',
+    name: 'Unlucky ACE!'
+  }
+}
+
 export const TAKE6_CARDS = [
   { id: 1, point: 1 },
   { id: 2, point: 1 },
