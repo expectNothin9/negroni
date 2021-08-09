@@ -26,7 +26,7 @@ export const getNavTabIconType = (tabId) => {
     case 'home':
       return 'home'
     case 'games':
-      return 'emoji_events'
+      return 'casino'
     case 'settings':
       return 'settings'
     case 'builders':
