@@ -4,7 +4,8 @@ import { fetchCreateTable } from './asyncThunks'
 
 const initialState = {
   games: ['UNLUCKY_ACE'],
-  table: null // { id, ownerId, memberIds }
+  selectedGameType: 'UNLUCKY_ACE',
+  table: null // { id, ownerId, memberIds, gameId }
 }
 
 export const gameSlice = createSlice({
@@ -13,7 +14,16 @@ export const gameSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchCreateTable.fulfilled]: (state, action) => {
-      state.tables = action.payload.table
+      const {
+        id,
+        owner: { id: ownerId },
+        members
+      } = action.payload.table
+      state.table = {
+        id,
+        ownerId,
+        memberIds: members.map((member) => member.id)
+      }
     }
   }
 })

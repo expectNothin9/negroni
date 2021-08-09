@@ -11,11 +11,15 @@ export const gqlAddTable = async ({ table }) => {
     },
     body: JSON.stringify({
       query: `mutation ($table: AddTableInput!) {
-  addTable(input: [$user]) {
+  addTable(input: [$table]) {
     table {
       id
-      owner
-      members
+      owner {
+        id
+      }
+      members {
+        id
+      }
     }
   }
 }`,

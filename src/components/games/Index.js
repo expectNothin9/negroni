@@ -1,9 +1,11 @@
-import { useSelector } from 'react-redux'
+import { useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import User from './User'
 import Icon from '../Icon'
 import { GAMES } from '../../utils/constants'
+import { fetchCreateTable } from '../../features/asyncThunks'
 
 const StyledGameItem = styled.li`
   .game-name {
@@ -11,36 +13,10 @@ const StyledGameItem = styled.li`
     font-size: 48px;
     font-weight: bold;
   }
-  button.start {
-    display: flex;
-    align-items: center;
-    margin-top: var(--gap);
-    padding: calc(var(--gap) / 2);
-    padding-right: var(--gap);
-    font-family: 'Acme';
-    font-size: 20px;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    background-color: var(--primary);
-    color: var(--on-primary);
-    cursor: pointer;
-    i {
-      margin-right: calc(var(--gap) / 2);
-    }
-  }
-  button.start:hover {
-    background-color: var(--primary-dark);
-    color: var(--on-primary-dark);
-  }
 `
 const GameItem = ({ game }) => (
   <StyledGameItem>
     <p className="game-name">{game.name}</p>
-    <button type="button" className="start">
-      <Icon type="play_arrow" />
-      START
-    </button>
   </StyledGameItem>
 )
 
@@ -48,11 +24,50 @@ const StyledGamesList = styled.ul``
 const GamesList = () => {
   const games = useSelector(({ game }) => game.games)
   return (
-    <StyledGamesList>
+    <StyledGamesList className="games-list">
       {games.map((gameId) => (
         <GameItem key={gameId} game={GAMES[gameId]} />
       ))}
     </StyledGamesList>
+  )
+}
+
+const StyledCreateGameButton = styled.button`
+  display: flex;
+  align-items: center;
+  margin-top: var(--gap);
+  padding: calc(var(--gap) / 2);
+  padding-right: var(--gap);
+  font-family: 'Acme';
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--primary-dark);
+    color: var(--on-primary-dark);
+  }
+`
+const CreateGameButton = () => {
+  const dispatch = useDispatch()
+  const isLogin = useSelector(({ user }) => !!user.selfUserId)
+  const selectedGameType = useSelector(({ game }) => game.selectedGameType)
+  const handleClick = useCallback(() => {
+    if (isLogin) {
+      dispatch(fetchCreateTable({ gameType: selectedGameType }))
+    } else {
+      // TODO: error toast
+      console.log('TODO: error toast of need login')
+    }
+  }, [dispatch, isLogin, selectedGameType])
+  return (
+    <StyledCreateGameButton type="button" className="create-game" onClick={handleClick}>
+      <Icon type="play_arrow" />
+      START
+    </StyledCreateGameButton>
   )
 }
 
@@ -78,6 +93,7 @@ const GamesIndex = () => (
     </LeftBox>
     <RightBox>
       <GamesList />
+      <CreateGameButton />
     </RightBox>
   </GamesBox>
 )

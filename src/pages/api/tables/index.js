@@ -13,16 +13,19 @@ const handler = async (req, res) => {
     }
 
     try {
-      const getUserResp = await gqlGetUser({ userId })
-      const user = getUserResp.data.getUser
+      const gqlGetUserResp = await gqlGetUser({ userId })
+      const user = gqlGetUserResp.data.getUser
       const tableVariable = {
         owner: user,
         members: [user]
       }
-      const addTableResp = await gqlAddTable({ table: tableVariable })
-      const table = addTableResp.data.addTable
-      return res.status(200).json({ table })
+      const gqlAddTableResp = await gqlAddTable({ table: tableVariable })
+      if (gqlAddTableResp.errors) {
+        throw new Error(gqlAddTableResp.errors[0].message)
+      }
+      return res.status(200).json({ table: gqlAddTableResp.data.addTable.table[0] })
     } catch (e) {
+      console.log(e)
       return res.status(200).json({ error: e })
     }
   }
