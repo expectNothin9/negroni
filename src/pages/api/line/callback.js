@@ -1,7 +1,7 @@
 import Cookies from 'cookies'
 import dayjs from 'dayjs'
 
-import { gqlGetUser, gqlAddUser } from '../../../features/asyncThunks'
+import { gqlAddUser } from '../../../features/asyncThunks'
 
 const {
   LINE_LOGIN_CHANNEL_ID,
@@ -74,9 +74,9 @@ const handler = async (req, res) => {
         avatarImage: profileResp.picture
       }
       console.log('user', user)
-      const gqlGetUserResp = await gqlAddUser({ user })
-      if (gqlGetUserResp.errors) {
-        throw new Error(gqlGetUserResp.errors[0].message)
+      const gqlAddUserResp = await gqlAddUser({ user })
+      if (gqlAddUserResp.errors) {
+        throw new Error(gqlAddUserResp.errors[0].message)
       }
 
       const cookies = new Cookies(req, res, { keys: [COOKIES_KEY] })
