@@ -45,18 +45,14 @@ const handler = async (req, res) => {
   // https://developers.line.biz/zh-hant/docs/line-login/integrate-line-login/#receiving-the-authorization-code-or-error-response-with-a-web-app
   const { query } = req
   if (query.state) {
-    let originUrl = '/'
-    switch (query.state) {
-      case 'PLAY_TAKE6':
-        originUrl = '/games/take6'
-        break
-      case 'UNLUCKY_ACE':
-        originUrl = '/games/unlucky-ace'
-        break
-    }
-
     if (query.error) {
       return res.status(400).json(query)
+    }
+
+    let originUrl = '/'
+    if (/^TABLE_/.test(query.state)) {
+      const tableId = query.state.replace(/^TABLE_/, '')
+      originUrl = `/tables/${tableId}`
     }
 
     try {
