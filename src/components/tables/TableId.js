@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
@@ -44,16 +45,13 @@ const MemberItem = ({ memberId }) => (
 )
 
 const StyledMembersList = styled.ul``
-const MembersList = () => {
-  const table = useSelector(({ game }) => game.table)
-  return (
-    <StyledMembersList className="members-list">
-      {table.memberIds.map((memberId) => (
-        <MemberItem key={memberId} memberId={memberId} />
-      ))}
-    </StyledMembersList>
-  )
-}
+const MembersList = ({ memberIds }) => (
+  <StyledMembersList className="members-list">
+    {memberIds.map((memberId) => (
+      <MemberItem key={memberId} memberId={memberId} />
+    ))}
+  </StyledMembersList>
+)
 
 const TableBox = styled.section`
   --gap: 12px;
@@ -64,10 +62,17 @@ const TableBox = styled.section`
   justify-content: center;
   align-items: center;
 `
-const TableIndex = () => (
-  <TableBox className="table">
-    <MembersList />
-  </TableBox>
-)
+const TableIndex = () => {
+  const router = useRouter()
+  const { tableId } = router.query
+  const table = useSelector(({ table: tableState }) =>
+    tableState.tables.find((table) => table.id === tableId)
+  )
+  return (
+    <TableBox className="table">
+      {table ? <MembersList memberIds={table.memberIds} /> : `tableId ${tableId} not found`}
+    </TableBox>
+  )
+}
 
 export default TableIndex

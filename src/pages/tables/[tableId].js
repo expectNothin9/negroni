@@ -8,7 +8,7 @@ import Main from '../../components/Main'
 import UniHeader from '../../components/UniHeader'
 import TableIndex from '../../components/tables/TableId'
 import { initGames } from '../../features/pageSlice'
-import { fetchTable } from '../../features/asyncThunks'
+import { isRejected, fetchTable } from '../../features/asyncThunks'
 
 const { COOKIES_KEY } = process.env
 export const getServerSideProps = nextReduxWrapper.getServerSideProps(

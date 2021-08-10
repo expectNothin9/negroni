@@ -1,5 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
+export const isFulfilled = (action) => {
+  return /\/fulfilled$/.test(action.type)
+}
+
+export const isRejected = (action) => {
+  return /\/rejected$/.test(action.type)
+}
+
 const API_HOST = process.env.NEXT_PUBLIC_API_HOST
 const DGRAPH_CLOUD_GQL = process.env.NEXT_PUBLIC_DGRAPH_CLOUD_GQL
 
@@ -63,7 +71,11 @@ export const gqlGetTable = async ({ tableId }) => {
 }
 export const fetchTable = createAsyncThunk('game/fetchTable', async ({ tableId }) => {
   const gqlGetTableResp = await gqlGetTable({ tableId })
-  return { table: gqlGetTableResp.data.getTable }
+  const table = gqlGetTableResp.data.getTable
+  if (!table) {
+    throw new Error(`Table ${tableId} not found.`)
+  }
+  return { table }
 })
 
 // export const fetchCreateUnluckyAceGame = createAsyncThunk(

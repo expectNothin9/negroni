@@ -22,7 +22,7 @@ const GameItem = ({ game }) => (
 
 const StyledGamesList = styled.ul``
 const GamesList = () => {
-  const games = useSelector(({ game }) => game.games)
+  const games = Object.keys(GAMES)
   return (
     <StyledGamesList className="games-list">
       {games.map((gameId) => (
@@ -54,7 +54,7 @@ const StyledCreateGameButton = styled.button`
 const CreateGameButton = () => {
   const dispatch = useDispatch()
   const isLogin = useSelector(({ user }) => !!user.selfUserId)
-  const selectedGameType = useSelector(({ game }) => game.selectedGameType)
+  const selectedGameType = 'UNLUCKY_ACE' // FIXME: should select from pageSlice
   const handleClick = useCallback(() => {
     if (isLogin) {
       dispatch(fetchCreateTable({ gameType: selectedGameType }))
