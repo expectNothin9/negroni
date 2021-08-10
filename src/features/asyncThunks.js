@@ -37,6 +37,35 @@ export const fetchCreateTable = createAsyncThunk('game/fetchCreateTable', async 
   return { table: response.table }
 })
 
+export const gqlGetTable = async ({ tableId }) => {
+  return await fetch(DGRAPH_CLOUD_GQL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      query: `query {
+  getTable(id: "${tableId}") {
+    id
+    owner {
+      id
+    }
+    members {
+      id
+      name
+      avatarImage
+      displayName
+    }
+  }
+}`
+    })
+  }).then((resp) => resp.json())
+}
+export const fetchTable = createAsyncThunk('game/fetchTable', async ({ tableId }) => {
+  const gqlGetTableResp = await gqlGetTable({ tableId })
+  return { table: gqlGetTableResp.data.getTable }
+})
+
 // export const fetchCreateUnluckyAceGame = createAsyncThunk(
 //   'unluckyAce/fetchCreateUnluckyAceGame',
 //   async ({ ownerId }) => {
@@ -70,8 +99,8 @@ export const gqlGetUser = async ({ userId }) => {
   }).then((resp) => resp.json())
 }
 export const fetchUser = createAsyncThunk('user/fetchUser', async ({ userId }) => {
-  const response = await gqlGetUser({ userId })
-  return { user: response.data.getUser }
+  const gqlGetUserResp = await gqlGetUser({ userId })
+  return { user: gqlGetUserResp.data.getUser }
 })
 
 export const gqlAddUser = async ({ user }) => {
