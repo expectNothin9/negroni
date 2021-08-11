@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -19,6 +20,11 @@ const GameItem = ({ game }) => (
     <p className="game-name">{game.name}</p>
   </StyledGameItem>
 )
+GameItem.propTypes = {
+  game: PropTypes.shape({
+    name: PropTypes.string.isRequired
+  }).isRequired
+}
 
 const StyledGamesList = styled.ul``
 const GamesList = () => {

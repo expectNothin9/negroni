@@ -30,7 +30,7 @@ const handler = async (req, res) => {
     }
   }
 
-  res.status(404).json({ error: new Error('Not found.') })
+  return res.status(404).json({ error: new Error('Not found.') })
 }
 
 export default handler

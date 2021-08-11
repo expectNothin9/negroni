@@ -6,7 +6,7 @@ import UniHeader from '../components/UniHeader'
 import SettingsIndex from '../components/settings/Index'
 import { initSettings } from '../features/pageSlice'
 
-export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async (_context) => {
+export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async () => {
   store.dispatch(
     initSettings({
       nav: {

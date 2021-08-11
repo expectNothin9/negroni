@@ -7,8 +7,10 @@ export default class MyDocument extends Document {
     const originalRenderPage = ctx.renderPage
 
     try {
+      // eslint-disable-next-line no-param-reassign
       ctx.renderPage = () =>
         originalRenderPage({
+          // eslint-disable-next-line react/jsx-props-no-spreading
           enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)
         })
 
@@ -32,7 +34,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
           <link
             href="https://fonts.googleapis.com/css2?family=Material+Icons&display="
             rel="stylesheet"

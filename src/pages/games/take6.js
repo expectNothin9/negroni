@@ -40,6 +40,7 @@ export const getServerSideProps = nextReduxWrapper.getServerSideProps(
       }
     }
 
+    await store.dispatch(fetchTable({ tableId: 1 }))
     store.dispatch(
       initGames({
         nav: {
@@ -47,7 +48,7 @@ export const getServerSideProps = nextReduxWrapper.getServerSideProps(
         }
       })
     )
-    await store.dispatch(fetchTable({ tableId: 1 }))
+    return true
   }
 )
 

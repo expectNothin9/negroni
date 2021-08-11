@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useRouter } from 'next/dist/client/router'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -25,14 +26,19 @@ const StyledUser = styled.div`
   }
 `
 const User = ({ userId }) => {
-  const user = useSelector(({ user }) => user.users.find((user) => user.id === userId))
-  return user ? (
+  const targetUser = useSelector(({ user: userState }) =>
+    userState.users.find((user) => user.id === userId)
+  )
+  return targetUser ? (
     <StyledUser className="user">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="user-avatar" src={user.avatarImage} alt="user avatar" />
-      <p className="user-name">{user.displayName || user.name}</p>
+      <img className="user-avatar" src={targetUser.avatarImage} alt="user avatar" />
+      <p className="user-name">{targetUser.displayName || targetUser.name}</p>
     </StyledUser>
   ) : null
+}
+User.propTypes = {
+  userId: PropTypes.string.isRequired
 }
 
 const StyledMemberItem = styled.li`
@@ -43,6 +49,9 @@ const MemberItem = ({ memberId }) => (
     <User userId={memberId} />
   </StyledMemberItem>
 )
+MemberItem.propTypes = {
+  memberId: PropTypes.string.isRequired
+}
 
 const StyledMembersList = styled.ul``
 const MembersList = ({ memberIds }) => (
@@ -52,6 +61,9 @@ const MembersList = ({ memberIds }) => (
     ))}
   </StyledMembersList>
 )
+MembersList.propTypes = {
+  memberIds: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+}
 
 const TableBox = styled.section`
   --gap: 12px;
@@ -65,12 +77,16 @@ const TableBox = styled.section`
 const TableIndex = () => {
   const router = useRouter()
   const { tableId } = router.query
-  const table = useSelector(({ table: tableState }) =>
+  const targetTable = useSelector(({ table: tableState }) =>
     tableState.tables.find((table) => table.id === tableId)
   )
   return (
     <TableBox className="table">
-      {table ? <MembersList memberIds={table.memberIds} /> : `tableId ${tableId} not found`}
+      {targetTable ? (
+        <MembersList memberIds={targetTable.memberIds} />
+      ) : (
+        `tableId ${tableId} not found`
+      )}
     </TableBox>
   )
 }

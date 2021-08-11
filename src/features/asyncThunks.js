@@ -12,7 +12,7 @@ const API_HOST = process.env.NEXT_PUBLIC_API_HOST
 const DGRAPH_CLOUD_GQL = process.env.NEXT_PUBLIC_DGRAPH_CLOUD_GQL
 
 export const gqlAddTable = async ({ table }) => {
-  return await fetch(DGRAPH_CLOUD_GQL, {
+  return fetch(DGRAPH_CLOUD_GQL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ export const fetchCreateTable = createAsyncThunk('game/fetchCreateTable', async 
 })
 
 export const gqlGetTable = async ({ tableId }) => {
-  return await fetch(DGRAPH_CLOUD_GQL, {
+  const response = await fetch(DGRAPH_CLOUD_GQL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -68,6 +68,7 @@ export const gqlGetTable = async ({ tableId }) => {
 }`
     })
   }).then((resp) => resp.json())
+  return response
 }
 export const fetchTable = createAsyncThunk('game/fetchTable', async ({ tableId }) => {
   const gqlGetTableResp = await gqlGetTable({ tableId })
@@ -93,7 +94,7 @@ export const fetchTable = createAsyncThunk('game/fetchTable', async ({ tableId }
 // )
 
 export const gqlGetUser = async ({ userId }) => {
-  return await fetch(DGRAPH_CLOUD_GQL, {
+  return fetch(DGRAPH_CLOUD_GQL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -116,7 +117,7 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async ({ userId }) =
 })
 
 export const gqlAddUser = async ({ user }) => {
-  return await fetch(DGRAPH_CLOUD_GQL, {
+  return fetch(DGRAPH_CLOUD_GQL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

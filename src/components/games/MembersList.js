@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const List = styled.ul`
@@ -31,5 +32,14 @@ const MembersList = ({ members }) => (
     ))}
   </List>
 )
+MembersList.propTypes = {
+  members: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      nickname: PropTypes.string.isRequired,
+      score: PropTypes.number.isRequired
+    })
+  ).isRequired
+}
 
 export default MembersList

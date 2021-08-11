@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const StyledCard = styled.div`
@@ -25,5 +26,11 @@ const Card = ({ card }) => (
     <span>{card.id}</span>
   </StyledCard>
 )
+Card.propTypes = {
+  card: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    point: PropTypes.number.isRequired
+  }).isRequired
+}
 
 export default Card

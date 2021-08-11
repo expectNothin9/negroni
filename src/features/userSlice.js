@@ -32,6 +32,6 @@ export const userSlice = createSlice({
   }
 })
 
-export const {} = userSlice.actions
+// export const {} = userSlice.actions
 
 export default userSlice.reducer

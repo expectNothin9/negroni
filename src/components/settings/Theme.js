@@ -47,26 +47,26 @@ const Theme = () => {
     <Section className="theme">
       <Caption>Theme</Caption>
       <RadioBox>
-        <input
-          id="theme-light"
-          type="radio"
-          name="theme"
-          value="light"
-          checked={theme === 'light'}
-          onChange={handleChangeTheme}
-        />
         <label htmlFor="theme-light">
+          <input
+            id="theme-light"
+            type="radio"
+            name="theme"
+            value="light"
+            checked={theme === 'light'}
+            onChange={handleChangeTheme}
+          />
           <Icon type="light_mode" title="light theme" />
         </label>
-        <input
-          id="theme-dark"
-          type="radio"
-          name="theme"
-          value="dark"
-          checked={theme === 'dark'}
-          onChange={handleChangeTheme}
-        />
         <label htmlFor="theme-dark">
+          <input
+            id="theme-dark"
+            type="radio"
+            name="theme"
+            value="dark"
+            checked={theme === 'dark'}
+            onChange={handleChangeTheme}
+          />
           <Icon type="dark_mode" title="dark theme" />
         </label>
       </RadioBox>

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -19,6 +20,9 @@ const Main = ({ children }) => {
   }, [dispatch])
 
   return <StyledMain className={theme}>{children}</StyledMain>
+}
+Main.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default Main

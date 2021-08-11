@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
@@ -37,17 +38,27 @@ const LoginUser = ({ user }) => (
     <p className="user-name">{user.displayName || user.name}</p>
   </>
 )
+LoginUser.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    displayName: PropTypes.string,
+    avatarImage: PropTypes.string.isRequired
+  }).isRequired
+}
 
 const User = ({ className }) => {
-  const user = useSelector(({ user }) => {
-    const { selfUserId, users } = user
+  const targetUser = useSelector(({ user: userState }) => {
+    const { selfUserId, users } = userState
     return users.find((user) => user.id === selfUserId)
   })
   return (
     <StyledUser className={`user ${className}`}>
-      {user ? <LoginUser user={user} /> : <NonLoginUser />}
+      {targetUser ? <LoginUser user={targetUser} /> : <NonLoginUser />}
     </StyledUser>
   )
+}
+User.propTypes = {
+  className: PropTypes.string
 }
 User.defaultProps = {
   className: ''

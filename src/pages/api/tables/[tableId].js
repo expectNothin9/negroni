@@ -19,7 +19,7 @@ const handler = (req, res) => {
               id: member.id,
               nickname: member.nickname, // FIXME: should leave only member id in game state
               score: TAKE6_INITIAL_SCORE,
-              handCards: handCards
+              handCards
             }
           }),
           row1: [cards[MEMBERS.length * 10]],

@@ -18,7 +18,7 @@ const fetchLineAccessToken = async (code) => {
   qs.append('redirect_uri', LINE_LOGIN_CHANNEL_CALLBACK_URL)
   qs.append('client_id', LINE_LOGIN_CHANNEL_ID)
   qs.append('client_secret', LINE_LOGIN_CHANNEL_SECRET)
-  return await fetch('https://api.line.me/oauth2/v2.1/token', {
+  return fetch('https://api.line.me/oauth2/v2.1/token', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -27,12 +27,12 @@ const fetchLineAccessToken = async (code) => {
   }).then((resp) => resp.json())
 }
 
-const fetchLineUserProfile = async (id_token) => {
+const fetchLineUserProfile = async (idToken) => {
   const qs = new URLSearchParams()
-  qs.append('id_token', id_token)
+  qs.append('id_token', idToken)
   qs.append('client_id', LINE_LOGIN_CHANNEL_ID)
   console.log('fetchLineUserProfile qs:', qs.toString())
-  return await fetch('https://api.line.me/oauth2/v2.1/verify', {
+  return fetch('https://api.line.me/oauth2/v2.1/verify', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -84,7 +84,7 @@ const handler = async (req, res) => {
     }
   }
 
-  res.status(200).json(query)
+  return res.status(200).json(query)
 }
 
 export default handler

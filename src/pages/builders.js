@@ -6,7 +6,7 @@ import UniHeader from '../components/UniHeader'
 import BuildersIndex from '../components/builders/Index'
 import { initBuilders } from '../features/pageSlice'
 
-export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async (_context) => {
+export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async () => {
   store.dispatch(
     initBuilders({
       nav: {

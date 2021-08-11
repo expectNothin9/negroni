@@ -37,7 +37,7 @@ const Take6Index = () => {
     return null
   }
   const gameState = table.game.state
-  const handCards = gameState.members.find((member) => member.id === selfUserId).handCards
+  const { handCards } = gameState.members.find((member) => member.id === selfUserId)
   return (
     <Take6Box className="take-6">
       <Aside>

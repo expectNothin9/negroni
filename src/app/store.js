@@ -23,9 +23,9 @@ const hydratedReducer = (state, action) => {
       ...action.payload // apply delta from hydration
     }
     return nextState
-  } else {
-    return combinedReducer(state, action)
   }
+
+  return combinedReducer(state, action)
 }
 
 const initStore = () => {
@@ -36,3 +36,5 @@ const initStore = () => {
 }
 
 export const nextReduxWrapper = createWrapper(initStore)
+
+export default {}

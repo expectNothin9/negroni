@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Icon from '../Icon'
@@ -28,6 +29,15 @@ const Grid = ({ row, column, children }) => (
     {children}
   </StyledGrid>
 )
+Grid.propTypes = {
+  row: PropTypes.number.isRequired,
+  column: PropTypes.number.isRequired,
+  children: PropTypes.node
+}
+Grid.defaultProps = {
+  children: undefined
+}
+
 const GridBox = styled.div`
   padding: var(--gap);
   display: grid;
@@ -46,6 +56,9 @@ const grids = {
     { id: 4, columns: [1, 2, 3, 4, 5, 6] }
   ]
 }
+
+// FIXME: need propTypes check
+// eslint-disable-next-line react/prop-types
 const Table = ({ gameState }) => (
   <GridBox className="table">
     {grids.rows.map((row) =>

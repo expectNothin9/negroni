@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Card from './Card'
@@ -32,13 +33,13 @@ const HandCards = ({ handCards }) => (
     <HandCardsList>
       {handCards.map((card, idx) => (
         <li key={card.id}>
-          <input
-            type="checkbox"
-            id={`handc-ard-${idx + 1}`}
-            name={`hand-card-${idx + 1}`}
-            value={card.id}
-          />
           <label htmlFor={`hand-card-${idx + 1}`}>
+            <input
+              type="checkbox"
+              id={`handc-ard-${idx + 1}`}
+              name={`hand-card-${idx + 1}`}
+              value={card.id}
+            />
             <Card card={card} />
           </label>
         </li>
@@ -46,5 +47,12 @@ const HandCards = ({ handCards }) => (
     </HandCardsList>
   </Box>
 )
+HandCards.propTypes = {
+  handCards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired
+    })
+  ).isRequired
+}
 
 export default HandCards

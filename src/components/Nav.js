@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Link from 'next/link'
@@ -28,12 +29,17 @@ const NavTab = ({ id, isActive }) => {
   return (
     <StyledNavTab className={isActive ? 'highlight' : ''}>
       <Link href={link}>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a>
           <Icon type={iconType} title={`Go to ${id} page`} />
         </a>
       </Link>
     </StyledNavTab>
   )
+}
+NavTab.propTypes = {
+  id: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired
 }
 
 const NavTabsList = styled.ul`

@@ -81,6 +81,7 @@ const Halo = () => {
   return (
     <HaloBox className="halo">
       {HALO_LETTERS.map((letter) => (
+        // eslint-disable-next-line no-useless-computed-key
         <span key={letter.id} style={{ ['--i']: letter.id }}>
           {letter.char}
         </span>
