@@ -4,7 +4,6 @@ import dayjs from 'dayjs'
 
 import { nextReduxWrapper } from '../../app/store'
 import Main from '../../components/Main'
-import UniHeader from '../../components/UniHeader'
 import UnluckyAceIndex from '../../components/games/UnluckyAce'
 
 import { fetchUser } from '../../features/asyncThunks'
@@ -39,9 +38,6 @@ export const getServerSideProps = nextReduxWrapper.getServerSideProps(
 
     store.dispatch(
       initGames({
-        nav: {
-          activeTab: 'games'
-        },
         user: {
           selfUserId
         }
@@ -56,7 +52,6 @@ const UnluckyAce = () => (
       <title>Unlucky ACE! - AGEDLION</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <UniHeader />
     <UnluckyAceIndex />
   </Main>
 )

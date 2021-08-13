@@ -4,11 +4,11 @@ import dayjs from 'dayjs'
 
 import { nextReduxWrapper } from '../../app/store'
 import Main from '../../components/Main'
-import UniHeader from '../../components/UniHeader'
 import GamesIndex from '../../components/games/Index'
 
 import { fetchUser } from '../../features/asyncThunks'
 import { initGames } from '../../features/pageSlice'
+import Nav from '../../components/Nav'
 
 const { COOKIES_KEY } = process.env
 export const getServerSideProps = nextReduxWrapper.getServerSideProps(
@@ -39,9 +39,6 @@ export const getServerSideProps = nextReduxWrapper.getServerSideProps(
 
     store.dispatch(
       initGames({
-        nav: {
-          activeTab: 'games'
-        },
         user: {
           selfUserId
         }
@@ -56,7 +53,7 @@ const Games = () => (
       <title>Games - AGEDLION</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <UniHeader />
+    <Nav />
     <GamesIndex />
   </Main>
 )

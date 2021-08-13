@@ -2,18 +2,12 @@ import Head from 'next/head'
 
 import { nextReduxWrapper } from '../app/store'
 import Main from '../components/Main'
-import UniHeader from '../components/UniHeader'
 import HomeIndex from '../components/home/Index'
 import { initHome } from '../features/pageSlice'
+import Nav from '../components/Nav'
 
 export const getStaticProps = nextReduxWrapper.getStaticProps((store) => async () => {
-  store.dispatch(
-    initHome({
-      nav: {
-        activeTab: 'home'
-      }
-    })
-  )
+  store.dispatch(initHome())
 })
 
 const Home = () => (
@@ -22,7 +16,7 @@ const Home = () => (
       <title>AGEDLION</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <UniHeader />
+    <Nav />
     <HomeIndex />
   </Main>
 )

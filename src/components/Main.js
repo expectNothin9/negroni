@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { changeTheme } from '../features/pageSlice'
 
 const StyledMain = styled.main`
+  --gap: 12px;
   background-color: var(--background);
   color: var(--on-background);
 `

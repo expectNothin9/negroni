@@ -5,7 +5,6 @@ import dayjs from 'dayjs'
 import { nextReduxWrapper } from '../../app/store'
 import { getApiLineAuthorizeUrl } from '../../utils'
 import Main from '../../components/Main'
-import UniHeader from '../../components/UniHeader'
 import TableIndex from '../../components/tables/TableId'
 import { initGames } from '../../features/pageSlice'
 import { fetchTable } from '../../features/asyncThunks'
@@ -50,9 +49,6 @@ export const getServerSideProps = nextReduxWrapper.getServerSideProps(
     await store.dispatch(fetchTable({ tableId }))
     store.dispatch(
       initGames({
-        nav: {
-          activeTab: 'games'
-        },
         user: {
           selfUserId
         }
@@ -68,7 +64,6 @@ const Take6 = () => (
       <title>Table - AGEDLION</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <UniHeader />
     <TableIndex />
   </Main>
 )
