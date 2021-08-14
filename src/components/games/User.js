@@ -2,33 +2,23 @@ import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
+import Icon from '../Icon'
 import { getApiLineAuthorizeUrl } from '../../utils'
 
-const StyledUser = styled.div`
-  background-color: var(--surface);
-  color: var(--on-surface);
-  padding: var(--gap);
-  border-radius: 4px;
-  width: 100%;
+const StyledLoginLink = styled.a`
   display: flex;
   flex-direction: column;
   align-items: center;
-  .user-avatar {
-    width: 100%;
-    border-radius: 50%;
-  }
-  .user-name {
-    margin-top: var(--gap);
-    width: 100%;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  i {
+    font-size: 120px;
+    margin-bottom: var(--gap);
   }
 `
-const StyledLoginLink = styled.a``
 const LoginLink = () => (
-  <StyledLoginLink href={getApiLineAuthorizeUrl({ state: 'UNLUCKY_ACE' })}>Login</StyledLoginLink>
+  <StyledLoginLink href={getApiLineAuthorizeUrl({ state: 'UNLUCKY_ACE' })}>
+    <Icon type="account_circle" />
+    Login
+  </StyledLoginLink>
 )
 const NonLoginUser = () => <LoginLink />
 const LoginUser = ({ user }) => (
@@ -46,6 +36,29 @@ LoginUser.propTypes = {
   }).isRequired
 }
 
+const StyledUser = styled.div`
+  background-color: var(--surface);
+  color: var(--on-surface);
+  padding: var(--gap) var(--gap) calc(var(--gap) * 2);
+  border-radius: 4px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .user-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+  .user-name {
+    margin-top: var(--gap);
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+`
 const User = ({ className }) => {
   const targetUser = useSelector(({ user: userState }) => {
     const { selfUserId, users } = userState

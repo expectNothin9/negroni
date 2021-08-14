@@ -85,7 +85,7 @@ const GamesBox = styled.section`
   align-items: center;
 `
 const LeftBox = styled.div`
-  width: 200px;
+  width: calc(var(--gap) +120px + var(--gap));
 `
 const RightBox = styled.div`
   margin-left: calc(var(--gap) * 3);
