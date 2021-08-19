@@ -2,7 +2,7 @@
  * @param {string} state
  * @returns {string}
  */
-export const getApiLineAuthorizeUrl = (state) => {
+export const getApiLineAuthorizeUrl = ({ state }) => {
   const qs = new URLSearchParams()
   qs.append('state', state)
   return `/api/line/authorize?${qs.toString()}`
@@ -23,12 +23,13 @@ export const shuffle = (array) => {
   let randomIndex
 
   // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+  while (currentIndex !== 0) {
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex)
-    currentIndex--
+    currentIndex -= 1
 
     // And swap it with the current element.
+    // eslint-disable-next-line no-param-reassign
     ;[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]]
   }
   return array
