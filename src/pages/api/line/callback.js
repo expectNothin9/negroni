@@ -50,7 +50,9 @@ const handler = async (req, res) => {
     }
 
     let originUrl = '/'
-    if (/^TABLE_/.test(query.state)) {
+    if (/^GAMES$/.test(query.state)) {
+      originUrl = '/games'
+    } else if (/^TABLE_/.test(query.state)) {
       const tableId = query.state.replace(/^TABLE_/, '')
       originUrl = `/tables/${tableId}`
     }

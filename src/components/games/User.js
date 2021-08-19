@@ -15,7 +15,7 @@ const StyledLoginLink = styled.a`
   }
 `
 const LoginLink = () => (
-  <StyledLoginLink href={getApiLineAuthorizeUrl({ state: 'UNLUCKY_ACE' })}>
+  <StyledLoginLink href={getApiLineAuthorizeUrl({ state: 'GAMES' })}>
     <Icon type="account_circle" />
     Login
   </StyledLoginLink>
