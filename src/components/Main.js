@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import { changeTheme } from '../features/pageSlice'
+import Toasts from './Toasts'
 
 const StyledMain = styled.main`
   --gap: 12px;
@@ -20,7 +21,12 @@ const Main = ({ children }) => {
     }
   }, [dispatch])
 
-  return <StyledMain className={theme}>{children}</StyledMain>
+  return (
+    <StyledMain className={theme}>
+      {children}
+      <Toasts />
+    </StyledMain>
+  )
 }
 Main.propTypes = {
   children: PropTypes.node.isRequired

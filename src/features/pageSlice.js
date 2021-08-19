@@ -1,8 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { v4 as uuidv4 } from 'uuid'
 
 const initialState = {
   id: '',
-  theme: 'light'
+  theme: 'light',
+  toasts: [
+    // {
+    //   type: 'success', // success | warning | error | neutral
+    //   message: 'Login is required to start a game.',
+    //   dismissed: false
+    // }
+  ]
 }
 
 export const pageSlice = createSlice({
@@ -20,10 +28,29 @@ export const pageSlice = createSlice({
     },
     initBuilders: (state) => {
       state.id = 'builders'
+    },
+    addToast: (state, action) => {
+      state.toasts.push({ ...action.payload, id: uuidv4(), dismissed: false })
+    },
+    dismissToast: (state, action) => {
+      const { toastId } = action.payload
+      const targetToastIndex = state.toasts.findIndex((toast) => toast.id === toastId)
+      state.toasts[targetToastIndex].dismissed = true
+    },
+    removeToast: (state, action) => {
+      state.toasts = state.toasts.filter((toast) => toast.id !== action.payload.toastId)
     }
   }
 })
 
-export const { changeTheme, initHome, initGames, initBuilders } = pageSlice.actions
+export const {
+  changeTheme,
+  initHome,
+  initGames,
+  initBuilders,
+  addToast,
+  dismissToast,
+  removeToast
+} = pageSlice.actions
 
 export default pageSlice.reducer

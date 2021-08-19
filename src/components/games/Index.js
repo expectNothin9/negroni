@@ -7,6 +7,7 @@ import User from './User'
 import Icon from '../Icon'
 import { GAMES } from '../../utils/constants'
 import { fetchCreateTable } from '../../features/asyncThunks'
+import { addToast } from '../../features/pageSlice'
 
 const StyledGameItem = styled.li`
   .game-name {
@@ -65,8 +66,7 @@ const CreateGameButton = () => {
     if (isLogin) {
       dispatch(fetchCreateTable({ gameType: selectedGameType }))
     } else {
-      // TODO: error toast
-      console.log('TODO: error toast of need login')
+      dispatch(addToast({ type: 'error', message: 'Login is required to start a game.' }))
     }
   }, [dispatch, isLogin, selectedGameType])
   return (
