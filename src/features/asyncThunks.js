@@ -28,6 +28,13 @@ export const gqlAddTable = async ({ table }) => {
       members {
         id
       }
+      game {
+        id
+        type
+        players {
+          id
+        }
+      }
     }
   }
 }`,
@@ -35,14 +42,20 @@ export const gqlAddTable = async ({ table }) => {
     })
   }).then((resp) => resp.json())
 }
-export const fetchCreateTable = createAsyncThunk('game/fetchCreateTable', async () => {
+export const fetchCreateTable = createAsyncThunk('game/fetchCreateTable', async ({ gameType }) => {
   const response = await fetch(`${API_HOST}/api/tables`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-    }
-  }).then((resp) => resp.json())
-  return { table: response.table }
+    },
+    body: JSON.stringify({ gameType })
+  })
+  if (!response.ok) {
+    const parsedResp = await response.json()
+    throw new Error(parsedResp.error.message)
+  }
+  const parsedResp = await response.json()
+  return { table: parsedResp.table }
 })
 
 export const gqlGetTable = async ({ tableId }) => {
@@ -63,6 +76,13 @@ export const gqlGetTable = async ({ tableId }) => {
       name
       avatarImage
       displayName
+    }
+    game {
+      id
+      type
+      players {
+        id
+      }
     }
   }
 }`

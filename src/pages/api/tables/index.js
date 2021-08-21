@@ -15,10 +15,16 @@ const handler = async (req, res) => {
     try {
       const gqlGetUserResp = await gqlGetUser({ userId })
       const user = gqlGetUserResp.data.getUser
+      const { gameType } = req.body
       const tableVariable = {
         owner: user,
-        members: [user]
+        members: [user],
+        game: {
+          type: gameType,
+          players: [user]
+        }
       }
+      console.log(tableVariable)
       const gqlAddTableResp = await gqlAddTable({ table: tableVariable })
       if (gqlAddTableResp.errors) {
         throw new Error(gqlAddTableResp.errors[0].message)
@@ -26,7 +32,7 @@ const handler = async (req, res) => {
       return res.status(200).json({ table: gqlAddTableResp.data.addTable.table[0] })
     } catch (e) {
       console.log(e)
-      return res.status(200).json({ error: e })
+      return res.status(400).json({ error: e })
     }
   }
 

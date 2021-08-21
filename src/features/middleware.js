@@ -12,14 +12,9 @@ const applicationMiddleware = (store) => (next) => (action) => {
     case fetchCreateTable.fulfilled.type: {
       if (isBrowser()) {
         const {
-          meta: {
-            arg: { gameType }
-          },
-          payload: {
-            table: { id: tableId }
-          }
-        } = action
-        window.location.href = `/tables/${tableId}?gameType=${gameType}`
+          table: { id: tableId }
+        } = action.payload
+        window.location.href = `/tables/${tableId}`
       }
       break
     }
