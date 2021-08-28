@@ -3,21 +3,31 @@ import { useRouter } from 'next/dist/client/router'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
+const StyledGameState = styled.pre``
+const GameState = ({ gameId }) => {
+  const targetGame = useSelector(({ game: gameSlice }) =>
+    gameSlice.games.find((game) => game.id === gameId)
+  )
+  return <StyledGameState>{JSON.stringify(targetGame.gameState, null, 2)}</StyledGameState>
+}
+GameState.propTypes = {
+  gameId: PropTypes.string.isRequired
+}
+
 const StyledUser = styled.div`
   background-color: var(--surface);
   color: var(--on-surface);
-  padding: var(--gap);
   border-radius: 4px;
+  overflow: hidden;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   .user-avatar {
     width: 100%;
-    border-radius: 50%;
   }
   .user-name {
-    margin-top: var(--gap);
+    padding: var(--gap);
     width: 100%;
     text-align: center;
     white-space: nowrap;
@@ -42,7 +52,7 @@ User.propTypes = {
 }
 
 const StyledMemberItem = styled.li`
-  width: 200px;
+  width: 180px;
 `
 const MemberItem = ({ memberId }) => (
   <StyledMemberItem>
@@ -81,7 +91,10 @@ const TableIndex = () => {
   return (
     <TableBox className="table">
       {targetTable ? (
-        <MembersList memberIds={targetTable.memberIds} />
+        <>
+          <MembersList memberIds={targetTable.memberIds} />
+          <GameState gameId={targetTable.gameId} />
+        </>
       ) : (
         `tableId ${tableId} not found`
       )}

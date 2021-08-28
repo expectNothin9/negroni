@@ -6,6 +6,7 @@ import pageReducer from '../features/pageSlice'
 import navReducer from '../features/navSlice'
 import userReducer from '../features/userSlice'
 import tableReducer from '../features/tableSlice'
+import gameReducer from '../features/gameSlice'
 
 import applicationMiddleware from '../features/middleware'
 
@@ -13,7 +14,8 @@ const combinedReducer = combineReducers({
   page: pageReducer,
   nav: navReducer,
   user: userReducer,
-  table: tableReducer
+  table: tableReducer,
+  game: gameReducer
 })
 
 const hydratedReducer = (state, action) => {

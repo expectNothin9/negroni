@@ -28,7 +28,7 @@ const reduceTable = (state, action) => {
   })
 }
 
-export const gameSlice = createSlice({
+export const tableSlice = createSlice({
   name: 'table',
   initialState,
   reducers: {},
@@ -38,6 +38,6 @@ export const gameSlice = createSlice({
   }
 })
 
-// export const {} = gameSlice.actions
+// export const {} = tableSlice.actions
 
-export default gameSlice.reducer
+export default tableSlice.reducer

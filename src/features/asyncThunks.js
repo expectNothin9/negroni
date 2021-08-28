@@ -83,6 +83,14 @@ export const gqlGetTable = async ({ tableId }) => {
       players {
         id
       }
+      gameState {
+        status
+        playersState {
+          playerId
+          joinedAt
+          isReady
+        }
+      }
     }
   }
 }`
@@ -93,6 +101,8 @@ export const gqlGetTable = async ({ tableId }) => {
 export const fetchTable = createAsyncThunk('game/fetchTable', async ({ tableId }) => {
   const gqlGetTableResp = await gqlGetTable({ tableId })
   const table = gqlGetTableResp.data.getTable
+  console.log(gqlGetTableResp)
+  console.log(table.game)
   if (!table) {
     throw new Error(`Table ${tableId} not found.`)
   }

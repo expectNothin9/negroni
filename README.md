@@ -5,9 +5,11 @@ The [Negroni](https://negroni.vercel.app/) is a popular Italian cocktail, made o
 ## Todos
 
 - [ ] Unlucky ACE!
+- [ ] general async thunks response error check function
+- [ ] logs of API/GQL for better debug experience
+- [ ] [Vercel realtime solutions](https://vercel.com/docs/solutions/realtime): [Pusher Channels](https://vercel.com/guides/deploying-pusher-channels-with-vercel) with vercel guide and [code example](https://github.com/vercel/vercel/tree/main/examples/vanilla-pusher-functions)
 - [ ] LINE chatroom
 - [ ] [Semantic UI React](https://react.semantic-ui.com/)
-- [ ] [Vercel realtime solutions](https://vercel.com/docs/solutions/realtime): [Pusher Channels](https://vercel.com/guides/deploying-pusher-channels-with-vercel) with vercel guide and [code example](https://github.com/vercel/vercel/tree/main/examples/vanilla-pusher-functions)
 
 ## Dgraph Cloud
 

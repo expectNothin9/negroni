@@ -21,7 +21,10 @@ const handler = async (req, res) => {
         members: [user],
         game: {
           type: gameType,
-          players: [user]
+          players: [user],
+          gameState: {
+            status: 'WAITING_TO_PLAY'
+          }
         }
       }
       console.log(tableVariable)
