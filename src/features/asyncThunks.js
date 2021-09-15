@@ -8,6 +8,17 @@ export const isRejected = (action) => {
   return /\/rejected$/.test(action.type)
 }
 
+const responseErrorCheck = async ({ response, defaultErrorMessage = 'API failed.' }) => {
+  if (!response.ok) {
+    try {
+      const parsedResp = await response.json()
+      throw new Error(parsedResp.error.message)
+    } catch (e) {
+      throw new Error(`${defaultErrorMessage} ${e.message}`)
+    }
+  }
+}
+
 const API_HOST = process.env.NEXT_PUBLIC_API_HOST
 const DGRAPH_CLOUD_GQL = process.env.NEXT_PUBLIC_DGRAPH_CLOUD_GQL
 
@@ -50,12 +61,12 @@ export const fetchCreateTable = createAsyncThunk('game/fetchCreateTable', async 
     },
     body: JSON.stringify({ gameType })
   })
-  if (!response.ok) {
-    const parsedResp = await response.json()
-    throw new Error(parsedResp.error.message)
-  }
-  const parsedResp = await response.json()
-  return { table: parsedResp.table }
+  await responseErrorCheck({
+    response,
+    defaultErrorMessage: 'game/fetchCreateTable failed.'
+  })
+  const { table } = await response.json()
+  return { table }
 })
 
 export const gqlGetTable = async ({ tableId }) => {
@@ -101,7 +112,6 @@ export const gqlGetTable = async ({ tableId }) => {
 export const fetchTable = createAsyncThunk('game/fetchTable', async ({ tableId }) => {
   const gqlGetTableResp = await gqlGetTable({ tableId })
   const table = gqlGetTableResp.data.getTable
-  console.log(gqlGetTableResp)
   console.log(table.game)
   if (!table) {
     throw new Error(`Table ${tableId} not found.`)

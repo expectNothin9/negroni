@@ -15,16 +15,15 @@ export const getServerSideProps = nextReduxWrapper.getServerSideProps(
   (store) => async (context) => {
     const { req, res } = context
     const cookies = new Cookies(req, res, { keys: [COOKIES_KEY] })
-    let selfUserId = null
 
     // check login is valid
+    const userId = cookies.get('userId', { signed: true })
     const t = cookies.get('t', { signed: true })
-    console.log(`cookies.t: ${t}`)
+    console.log(`cookies.userId: ${userId}\ncookies.t: ${t}`)
     let loginValid = false
     if (t) {
       const cookiesDate = dayjs(t)
       const now = dayjs()
-      console.log(`now.diff(cookieDate, 'day'): ${now.diff(cookiesDate, 'day')}`)
       if (now.diff(cookiesDate, 'day') < 7) {
         loginValid = true
       }
@@ -32,15 +31,13 @@ export const getServerSideProps = nextReduxWrapper.getServerSideProps(
 
     // fetch login user info from database
     if (loginValid) {
-      const userId = cookies.get('userId', { signed: true })
-      selfUserId = userId
       await store.dispatch(fetchUser({ userId }))
     }
 
     store.dispatch(
       initGames({
         user: {
-          selfUserId
+          selfUserId: userId || null
         }
       })
     )
