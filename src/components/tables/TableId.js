@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { useRouter } from 'next/dist/client/router'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import PusherChannel from '../PusherChannel'
 
 const StyledGameState = styled.pre``
 const GameState = ({ gameId }) => {
@@ -94,6 +95,7 @@ const TableIndex = () => {
         <>
           <MembersList memberIds={targetTable.memberIds} />
           <GameState gameId={targetTable.gameId} />
+          <PusherChannel />
         </>
       ) : (
         `tableId ${tableId} not found`

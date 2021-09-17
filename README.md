@@ -19,6 +19,10 @@ Use [Dgraph Cloud](https://cloud.dgraph.io/_/dashboard) as serverless database s
 
 Documentation of [integrating LINE Login with web app](https://developers.line.biz/zh-hant/docs/line-login/integrate-line-login/).
 
+## Pusher Channels
+
+[Pusher Channels](https://dashboard.pusher.com/) is a service that makes it easy to add real-time data and functionality to web and mobile apps by using WebSockets. Also one of suggested [realtime solutions of Next.js](https://vercel.com/docs/solutions/realtime) from Vercel. More information can be found in [vercel guide](https://vercel.com/guides/deploying-pusher-channels-with-vercel) and [code example](https://github.com/vercel/vercel/tree/main/examples/vanilla-pusher-functions)
+
 ## Vecteezy
 
 [Vecteezy Editor](https://www.vecteezy.com/editor) is free online SVG editor where logo is made. And the representative font is [`'Acme'`](https://fonts.google.com/specimen/Acme).
