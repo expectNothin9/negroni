@@ -174,3 +174,21 @@ export const gqlAddUser = async ({ user }) => {
     })
   }).then((resp) => resp.json())
 }
+
+export const fetchPushChannelsEvent = createAsyncThunk(
+  'game/fetchPushChannelsEvent',
+  async ({ message }) => {
+    const response = await fetch(`${API_HOST}/api/pusher/channels-event`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message })
+    })
+    await responseErrorCheck({
+      response,
+      defaultErrorMessage: 'game/fetchPushChannelsEvent failed.'
+    })
+    return response.json()
+  }
+)

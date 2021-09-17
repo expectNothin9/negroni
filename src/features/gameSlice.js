@@ -20,13 +20,18 @@ const initialState = {
     //     playersState: [{ playerId: 'LINE_USER_ID', joinedAt: 'YYYY-MM-DD', isReady: false }]
     //   }
     // }
-  ]
+  ],
+  messageToPush: 'Hello Pusher Channels'
 }
 
 export const gameSlice = createSlice({
   name: 'game',
   initialState,
-  reducers: {},
+  reducers: {
+    changeMessageToPush: (state, action) => {
+      state.messageToPush = action.payload.message
+    }
+  },
   extraReducers: {
     [fetchTable.fulfilled]: (state, action) => {
       const {
@@ -44,6 +49,6 @@ export const gameSlice = createSlice({
   }
 })
 
-// export const {} = gameSlice.actions
+export const { changeMessageToPush } = gameSlice.actions
 
 export default gameSlice.reducer

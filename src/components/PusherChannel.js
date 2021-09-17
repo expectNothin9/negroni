@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useScript } from './hooks'
 
+const PUSHER_KEY = process.env.NEXT_PUBLIC_PUSHER_KEY
+const PUSHER_CLUSTER = process.env.NEXT_PUBLIC_PUSHER_CLUSTER
+
 const PusherChannel = () => {
   const [pusherScriptLoaded, setPusherScriptLoaded] = useState(false)
   const onPusherScripteLoaded = useCallback(() => setPusherScriptLoaded(true), [])
@@ -8,7 +11,14 @@ const PusherChannel = () => {
 
   useEffect(() => {
     if (pusherScriptLoaded === true) {
-      console.log('Pusher script loaded.')
+      const pusher = new window.Pusher(PUSHER_KEY, {
+        cluster: PUSHER_CLUSTER
+      })
+
+      const channel = pusher.subscribe('my-channel')
+      channel.bind('my-event', (data) => {
+        console.log(JSON.stringify(data))
+      })
     }
   }, [pusherScriptLoaded])
 

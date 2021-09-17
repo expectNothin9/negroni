@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/dist/client/router'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import PusherChannel from '../PusherChannel'
+import { useCallback } from 'react'
+import { fetchPushChannelsEvent } from '../../features/asyncThunks'
+import { changeMessageToPush } from '../../features/gameSlice'
 
 const StyledGameState = styled.pre``
 const GameState = ({ gameId }) => {
@@ -76,6 +79,32 @@ MembersList.propTypes = {
   memberIds: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 }
 
+const StyledTestPusher = styled.section`
+  display: flex;
+  flex-direction: column;
+`
+const TestPusher = () => {
+  const dispatch = useDispatch()
+  const messageToPush = useSelector(({ game }) => game.messageToPush)
+  const handleChangeMessageToPush = useCallback(
+    (event) => dispatch(changeMessageToPush({ message: event.target.value })),
+    [dispatch]
+  )
+  const handlePushMessageToPusherChannerls = useCallback(
+    () => dispatch(fetchPushChannelsEvent({ message: messageToPush })),
+    [dispatch, messageToPush]
+  )
+  return (
+    <StyledTestPusher>
+      <h4>Message</h4>
+      <textarea value={messageToPush} onChange={handleChangeMessageToPush} />
+      <button type="button" onClick={handlePushMessageToPusherChannerls}>
+        Push to Pusher Channels
+      </button>
+    </StyledTestPusher>
+  )
+}
+
 const TableBox = styled.section`
   width: 100%;
   height: calc(100vh);
@@ -95,6 +124,7 @@ const TableIndex = () => {
         <>
           <MembersList memberIds={targetTable.memberIds} />
           <GameState gameId={targetTable.gameId} />
+          <TestPusher />
           <PusherChannel />
         </>
       ) : (
