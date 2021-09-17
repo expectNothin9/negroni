@@ -1,11 +1,12 @@
+import { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/dist/client/router'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import PusherChannel from '../PusherChannel'
-import { useCallback } from 'react'
+
 import { fetchPushChannelsEvent } from '../../features/asyncThunks'
 import { changeMessageToPush } from '../../features/gameSlice'
+import PusherChannel from '../PusherChannel'
 
 const StyledGameState = styled.pre``
 const GameState = ({ gameId }) => {
